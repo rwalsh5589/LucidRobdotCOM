@@ -1161,9 +1161,10 @@ footer::before {
         <h3>Direct to your inbox.</h3>
         <p>Occasional dispatches. Stories too weird or too mean for YouTube. Early links. No spam, no funnel nonsense, no selling your email to anyone who wants to sell you a supplement.</p>
         <form class="newsletter-form" id="newsletterForm">
-          <input type="email" name="email" placeholder="your@email.com" required />
-          <button type="submit" class="btn primary">Subscribe <span class="arrow">→</span></button>
+          <input type="email" name="email" id="newsletterEmail" placeholder="your@email.com" required />
+          <button type="submit" class="btn primary" id="newsletterBtn">Subscribe <span class="arrow">→</span></button>
         </form>
+        <p class="newsletter-confirm" id="newsletterConfirm" style="display:none;color:var(--neon-cyan);font-family:'JetBrains Mono',monospace;font-size:13px;margin-top:12px;text-shadow:0 0 8px rgba(0,240,255,0.5);">// SIGNAL RECEIVED. YOU'RE IN.</p>
       </div>
       <div class="join-col discord">
         <span class="tag">// DISCORD</span>
@@ -1318,8 +1319,25 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') modalBackd
 
 // Newsletter
 const nlForm = document.getElementById('newsletterForm');
-nlForm.action = CONFIG.NEWSLETTER_ACTION;
-nlForm.method = 'POST';
+nlForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('newsletterEmail').value;
+  const btn = document.getElementById('newsletterBtn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  try {
+    await fetch('https://formsubmit.co/ajax/lucidrobbiz@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ email, _subject: 'New Subscriber - LucidRob.com', _captcha: 'false' })
+    });
+    nlForm.style.display = 'none';
+    document.getElementById('newsletterConfirm').style.display = 'block';
+  } catch {
+    btn.textContent = 'Subscribe →';
+    btn.disabled = false;
+  }
+});
 
 // Discord
 document.getElementById('discordLink').href = CONFIG.DISCORD_URL;
