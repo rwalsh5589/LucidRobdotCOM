@@ -127,44 +127,39 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   background-image:
-    /* ground-level amber smog — heavy Blade Runner 2049 street glow rising off the pavement */
-    linear-gradient(180deg, transparent 40%, rgba(255, 110, 25, 0.10) 70%, rgba(255, 70, 10, 0.28) 100%),
-    /* sky-blanket magenta haze, top-left, much heavier */
-    radial-gradient(ellipse 1500px 1100px at 5% -8%, rgba(255, 0, 110, 0.34), transparent 60%),
-    /* cyan rooftop searchlight wash, top-right, brighter */
-    radial-gradient(ellipse 1300px 1100px at 98% 4%, rgba(0, 210, 255, 0.24), transparent 60%),
+    /* ground-level amber smog — Blade Runner street-lamp glow rising off the pavement */
+    linear-gradient(180deg, transparent 55%, rgba(255, 110, 25, 0.05) 82%, rgba(255, 80, 15, 0.11) 100%),
+    /* upper-atmosphere magenta haze, deeper and lower */
+    radial-gradient(ellipse 1300px 1000px at 6% -6%, rgba(255, 0, 110, 0.20), transparent 62%),
+    /* cyan rooftop searchlight wash, top-right */
+    radial-gradient(ellipse 1200px 1000px at 96% 8%, rgba(0, 200, 255, 0.14), transparent 65%),
     /* violet tower bloom, mid-right */
-    radial-gradient(ellipse 950px 850px at 105% 55%, rgba(180, 0, 255, 0.22), transparent 60%),
-    /* warm street-lamp pool, bottom-center, bigger and hotter */
-    radial-gradient(ellipse 1300px 750px at 50% 112%, rgba(255, 120, 20, 0.22), transparent 65%),
+    radial-gradient(ellipse 850px 750px at 102% 55%, rgba(180, 0, 255, 0.13), transparent 62%),
+    /* warm street-lamp pool, bottom-center */
+    radial-gradient(ellipse 1100px 600px at 50% 110%, rgba(255, 130, 25, 0.11), transparent 65%),
     /* amber side bloom, bottom-right */
-    radial-gradient(ellipse 800px 600px at 82% 82%, rgba(255, 180, 0, 0.13), transparent 60%),
-    /* low-left amber bloom for symmetry */
-    radial-gradient(ellipse 700px 500px at 12% 88%, rgba(255, 140, 30, 0.10), transparent 60%),
-    /* hazy cyan horizon band, mid-screen */
-    radial-gradient(ellipse 1800px 500px at 50% 48%, rgba(0, 180, 220, 0.07), transparent 70%);
+    radial-gradient(ellipse 700px 500px at 80% 80%, rgba(255, 180, 0, 0.07), transparent 60%),
+    /* far-distance soft cyan fog band, mid-screen */
+    radial-gradient(ellipse 1600px 400px at 50% 45%, rgba(0, 180, 220, 0.04), transparent 70%);
   background-attachment: fixed;
 }
 
-/* Scanlines + film-grain — cyan primary, amber sub-line, and a noise wash for smoky CRT feel */
+/* Scanlines — cyan primary + faint amber sub-line for smoky CRT feel */
 body::before {
   content: "";
   position: fixed; inset: 0; pointer-events: none; z-index: 9998;
   background:
-    repeating-linear-gradient(0deg, transparent 0, transparent 2px, rgba(0, 240, 255, 0.035) 2px, rgba(0, 240, 255, 0.035) 3px),
-    repeating-linear-gradient(0deg, transparent 0, transparent 5px, rgba(255, 130, 25, 0.018) 5px, rgba(255, 130, 25, 0.018) 6px),
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 0.85  0 0 0 0 0.7  0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  opacity: 1;
-  mix-blend-mode: screen;
+    repeating-linear-gradient(0deg, transparent 0, transparent 2px, rgba(0, 240, 255, 0.020) 2px, rgba(0, 240, 255, 0.020) 3px),
+    repeating-linear-gradient(0deg, transparent 0, transparent 5px, rgba(255, 130, 25, 0.010) 5px, rgba(255, 130, 25, 0.010) 6px);
 }
 
-/* Vignette — much heavier, with a warm amber neon rim hugging the very edge */
+/* Vignette — heavier, tighter falloff, with a warm amber rim hugging the very edge */
 body::after {
   content: "";
   position: fixed; inset: 0; pointer-events: none; z-index: 9997;
   background:
-    radial-gradient(ellipse at center, transparent 0%, transparent 32%, rgba(0,0,0,0.92) 100%),
-    radial-gradient(ellipse at center, transparent 0%, transparent 80%, rgba(255, 90, 20, 0.18) 100%);
+    radial-gradient(ellipse at center, transparent 0%, transparent 42%, rgba(0,0,0,0.82) 100%),
+    radial-gradient(ellipse at center, transparent 0%, transparent 88%, rgba(255, 90, 20, 0.10) 100%);
 }
 
 .mono { font-family: 'JetBrains Mono', monospace; }
