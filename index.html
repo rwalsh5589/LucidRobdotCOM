@@ -895,8 +895,8 @@ section.violet-divider::before {
 }
 .caution-tape {
   position: absolute;
-  width: 300%;
-  left: -100%;
+  width: 600%;
+  left: -250%;
   top: 50%;
   margin-top: -18px;
   height: 36px;
@@ -906,23 +906,31 @@ section.violet-divider::before {
   font-size: 10px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  padding: 0 20px;
   background: linear-gradient(90deg, transparent 0%, rgba(0,240,255,0.06) 10%, rgba(255,0,110,0.09) 30%, rgba(0,240,255,0.07) 50%, rgba(255,180,0,0.07) 70%, rgba(0,240,255,0.06) 90%, transparent 100%);
   border-top: 1px solid rgba(0,240,255,0.22);
   border-bottom: 1px solid rgba(0,240,255,0.22);
   color: rgba(0,240,255,0.45);
   text-shadow: 0 0 8px rgba(0,240,255,0.5);
+  display: flex;
 }
-@keyframes tape-slide-right {
-  0%   { transform: rotate(-32deg) translateX(-70px); }
-  100% { transform: rotate(-32deg) translateX(70px); }
+.caution-tape .tape-track {
+  display: flex;
+  flex-shrink: 0;
+  min-width: 100%;
+  align-items: center;
+  padding: 0 32px;
+  gap: 0;
 }
-@keyframes tape-slide-left {
-  0%   { transform: rotate(32deg) translateX(70px); }
-  100% { transform: rotate(32deg) translateX(-70px); }
+@keyframes tape-scroll-left {
+  0%   { transform: rotate(-32deg) translateX(0); }
+  100% { transform: rotate(-32deg) translateX(-50%); }
 }
-.caution-tape-1 { animation: tape-slide-right 12s ease-in-out infinite alternate; }
-.caution-tape-2 { animation: tape-slide-left 12s ease-in-out infinite alternate; }
+@keyframes tape-scroll-right {
+  0%   { transform: rotate(32deg) translateX(-50%); }
+  100% { transform: rotate(32deg) translateX(0); }
+}
+.caution-tape-1 { animation: tape-scroll-left 18s linear infinite; }
+.caution-tape-2 { animation: tape-scroll-right 18s linear infinite; }
 
 .merch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; }
 .merch-item { position: relative; display: block; transition: transform 0.3s; }
@@ -1123,8 +1131,14 @@ footer::before {
 
     <div class="merch-coming-soon">
       <div class="caution-wrap">
-        <div class="caution-tape caution-tape-1">/// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION ///</div>
-        <div class="caution-tape caution-tape-2">/// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION ///</div>
+        <div class="caution-tape caution-tape-1">
+          <span class="tape-track">/// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION ///</span>
+          <span class="tape-track">/// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION ///</span>
+        </div>
+        <div class="caution-tape caution-tape-2">
+          <span class="tape-track">/// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION ///</span>
+          <span class="tape-track">/// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION /// UNDER CONSTRUCTION ///</span>
+        </div>
       </div>
       <div class="coming-soon-inner">
         <div class="coming-soon-eyebrow">// STATUS: OFFLINE</div>
