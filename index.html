@@ -1255,9 +1255,12 @@ postsList.addEventListener('click', (e) => {
   modalDate.textContent = new Date(post.date).toISOString().slice(0,10).replace(/-/g, '.');
   modalBody.innerHTML = post.body.split('\n\n').map(p => {
     const trimmed = p.trim();
-    // Subheading heuristic: short (< 90 chars), no trailing period, and either ends in ? or starts with capital "The/Why/How/What/Where/When/Is/Are" etc.
     const isSubhead = trimmed.length < 90 && !trimmed.endsWith('.') && !trimmed.endsWith('!') && !trimmed.endsWith('"');
-    return isSubhead ? `<h3>${trimmed}</h3>` : `<p>${trimmed}</p>`;
+    const linked = trimmed.replace(/(https?:\/\/[^\s<]+|(?:www\.)?youtube\.com\/[^\s<]+)/gi, (url) => {
+      const href = url.startsWith('http') ? url : 'https://' + url;
+      return `<a href="${href}" target="_blank" rel="noopener" style="color:var(--neon-cyan);text-decoration:underline;text-underline-offset:3px;">${url}</a>`;
+    });
+    return isSubhead ? `<h3>${trimmed}</h3>` : `<p>${linked}</p>`;
   }).join('');
   modalBackdrop.classList.add('open');
 });
