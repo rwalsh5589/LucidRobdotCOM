@@ -100,19 +100,19 @@
 
 <style>
 :root {
-  --bg: #05060a;
-  --bg-2: #0a0c14;
-  --bg-3: #10131f;
-  --fg: #e8e8f0;
-  --fg-dim: #9090a0;
-  --fg-mute: #50505a;
+  --bg: #02030a;
+  --bg-2: #070a14;
+  --bg-3: #0d1120;
+  --fg: #d8dce8;
+  --fg-dim: #7a7e95;
+  --fg-mute: #3a3d52;
   --neon-pink: #ff006e;
   --neon-cyan: #00f0ff;
   --neon-amber: #ffb400;
   --neon-violet: #b400ff;
   --neon-green: #39ff6a;
-  --line: #1a1d2b;
-  --line-bright: #252838;
+  --line: #14172a;
+  --line-bright: #1f2438;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -127,25 +127,39 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   background-image:
-    radial-gradient(ellipse 1000px 800px at 10% 0%, rgba(255, 0, 110, 0.13), transparent 60%),
-    radial-gradient(ellipse 1100px 900px at 92% 20%, rgba(0, 240, 255, 0.10), transparent 60%),
-    radial-gradient(ellipse 900px 700px at 50% 110%, rgba(180, 0, 255, 0.09), transparent 60%),
-    radial-gradient(ellipse 700px 500px at 75% 75%, rgba(255, 180, 0, 0.05), transparent 60%);
+    /* ground-level amber smog — Blade Runner street-lamp glow rising off the pavement */
+    linear-gradient(180deg, transparent 55%, rgba(255, 110, 25, 0.05) 82%, rgba(255, 80, 15, 0.11) 100%),
+    /* upper-atmosphere magenta haze, deeper and lower */
+    radial-gradient(ellipse 1300px 1000px at 6% -6%, rgba(255, 0, 110, 0.20), transparent 62%),
+    /* cyan rooftop searchlight wash, top-right */
+    radial-gradient(ellipse 1200px 1000px at 96% 8%, rgba(0, 200, 255, 0.14), transparent 65%),
+    /* violet tower bloom, mid-right */
+    radial-gradient(ellipse 850px 750px at 102% 55%, rgba(180, 0, 255, 0.13), transparent 62%),
+    /* warm street-lamp pool, bottom-center */
+    radial-gradient(ellipse 1100px 600px at 50% 110%, rgba(255, 130, 25, 0.11), transparent 65%),
+    /* amber side bloom, bottom-right */
+    radial-gradient(ellipse 700px 500px at 80% 80%, rgba(255, 180, 0, 0.07), transparent 60%),
+    /* far-distance soft cyan fog band, mid-screen */
+    radial-gradient(ellipse 1600px 400px at 50% 45%, rgba(0, 180, 220, 0.04), transparent 70%);
   background-attachment: fixed;
 }
 
-/* Scanlines */
+/* Scanlines — cyan primary + faint amber sub-line for smoky CRT feel */
 body::before {
   content: "";
   position: fixed; inset: 0; pointer-events: none; z-index: 9998;
-  background: repeating-linear-gradient(0deg, transparent 0, transparent 2px, rgba(0, 240, 255, 0.012) 2px, rgba(0, 240, 255, 0.012) 3px);
+  background:
+    repeating-linear-gradient(0deg, transparent 0, transparent 2px, rgba(0, 240, 255, 0.020) 2px, rgba(0, 240, 255, 0.020) 3px),
+    repeating-linear-gradient(0deg, transparent 0, transparent 5px, rgba(255, 130, 25, 0.010) 5px, rgba(255, 130, 25, 0.010) 6px);
 }
 
-/* Vignette */
+/* Vignette — heavier, tighter falloff, with a warm amber rim hugging the very edge */
 body::after {
   content: "";
   position: fixed; inset: 0; pointer-events: none; z-index: 9997;
-  background: radial-gradient(ellipse at center, transparent 0%, transparent 55%, rgba(0,0,0,0.65) 100%);
+  background:
+    radial-gradient(ellipse at center, transparent 0%, transparent 42%, rgba(0,0,0,0.82) 100%),
+    radial-gradient(ellipse at center, transparent 0%, transparent 88%, rgba(255, 90, 20, 0.10) 100%);
 }
 
 .mono { font-family: 'JetBrains Mono', monospace; }
