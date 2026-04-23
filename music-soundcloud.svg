@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300">
+  <defs>
+    <pattern id="sl" x="0" y="0" width="600" height="4" patternUnits="userSpaceOnUse">
+      <rect width="600" height="1" fill="#ffffff" opacity="0.02"/>
+    </pattern>
+    <filter id="glow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="300" fill="#080810"/>
+  <rect width="600" height="300" fill="url(#sl)"/>
+
+  <!-- Border -->
+  <rect width="600" height="300" fill="none" stroke="#FF5500" stroke-width="1.5" opacity="0.45"/>
+  <!-- Corner notches -->
+  <path d="M0,20 L20,0" stroke="#FF5500" stroke-width="1.5" fill="none" opacity="0.85"/>
+  <path d="M580,0 L600,20" stroke="#FF5500" stroke-width="1.5" fill="none" opacity="0.85"/>
+  <path d="M0,280 L20,300" stroke="#FF5500" stroke-width="1.5" fill="none" opacity="0.85"/>
+  <path d="M580,300 L600,280" stroke="#FF5500" stroke-width="1.5" fill="none" opacity="0.85"/>
+
+  <!-- ILLUMINATI PYRAMID (right side, semi-transparent) -->
+  <g opacity="0.13" stroke="#FF5500" fill="#FF5500">
+    <polygon points="440,22 625,278 255,278" fill="none" stroke-width="2.5"/>
+    <ellipse cx="440" cy="178" rx="54" ry="34"/>
+    <circle cx="440" cy="178" r="22" fill="#080810"/>
+    <circle cx="440" cy="178" r="10" fill="#FF5500"/>
+    <circle cx="440" cy="178" r="4" fill="#080810"/>
+    <!-- Rays -->
+    <line x1="440" y1="138" x2="440" y2="120" stroke-width="1.5"/>
+    <line x1="471" y1="148" x2="486" y2="133" stroke-width="1.5"/>
+    <line x1="495" y1="178" x2="514" y2="178" stroke-width="1.5"/>
+    <line x1="471" y1="208" x2="486" y2="223" stroke-width="1.5"/>
+    <line x1="440" y1="218" x2="440" y2="236" stroke-width="1.5"/>
+    <line x1="409" y1="208" x2="394" y2="223" stroke-width="1.5"/>
+    <line x1="385" y1="178" x2="366" y2="178" stroke-width="1.5"/>
+    <line x1="409" y1="148" x2="394" y2="133" stroke-width="1.5"/>
+  </g>
+
+  <!-- SoundCloud logo (scaled 2.33x from 24x24) -->
+  <g transform="translate(44,44) scale(2.33)" filter="url(#glow)">
+    <path fill="#FF5500" d="M7.5 17.5h-.563c-.184 0-.33-.146-.33-.33l-.52-5.17.52-5.168c0-.184.146-.33.33-.33h.563c.184 0 .33.146.33.33l.557 5.168-.557 5.17c0 .184-.146.33-.33.33zm8.568 2.165c.168.08.35.168.53.168H20c2.21 0 4-1.79 4-4s-1.79-4-4-4c-.548 0-1.067.112-1.54.312C18.064 8.08 14.896 5 10.97 5c-.96 0-1.893.19-2.732.507-.325.126-.413.255-.416.51v11.994c.003.263.207.488.464.516z"/>
+  </g>
+
+  <!-- "LUCID ROB ON" label -->
+  <text x="44" y="144" font-family="'Courier New', Courier, monospace" font-size="11" fill="#FF5500" opacity="0.9" letter-spacing="5">LUCID ROB ON</text>
+
+  <!-- Platform name -->
+  <text x="40" y="204" font-family="Arial Black, Arial, sans-serif" font-size="48" font-weight="900" fill="#ffffff" filter="url(#glow)">SOUNDCLOUD</text>
+
+  <!-- Bottom tag -->
+  <text x="44" y="268" font-family="'Courier New', Courier, monospace" font-size="9" fill="#FF5500" opacity="0.55" letter-spacing="3">STREAM  ·  FOLLOW  ·  DISCOVER</text>
+</svg>

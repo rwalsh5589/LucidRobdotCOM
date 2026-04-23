@@ -814,15 +814,14 @@ section.violet-divider::before {
 .book .buy-btn:hover { border-color: var(--neon-pink); background: rgba(255, 0, 110, 0.1); box-shadow: 0 0 12px rgba(255, 0, 110, 0.3); }
 
 /* ===================== MUSIC ===================== */
-.music-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
-.music-tile { background: var(--bg); padding: 48px 28px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; transition: background 0.2s; position: relative; overflow: hidden; }
-.music-tile::after { content: "→"; position: absolute; top: 20px; right: 20px; font-family: 'JetBrains Mono', monospace; color: var(--fg-mute); transition: color 0.2s, transform 0.2s; }
-.music-tile:hover { background: var(--bg-2); }
-.music-tile:hover::after { color: var(--neon-amber); transform: translate(3px, -3px); text-shadow: 0 0 6px var(--neon-amber); }
-.music-tile svg { width: 32px; height: 32px; fill: var(--fg-dim); transition: fill 0.2s, filter 0.2s; }
-.music-tile:hover svg { fill: var(--neon-amber); filter: drop-shadow(0 0 6px var(--neon-amber)); }
-.music-tile .name { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; }
-.music-tile .sub { font-size: 11px; color: var(--fg-mute); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; }
+.music-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.music-tile { background: var(--bg); display: block; position: relative; overflow: hidden; aspect-ratio: 2/1; }
+.music-tile-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.music-tile:hover .music-tile-img { transform: scale(1.04); }
+.music-tile-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 14px 20px; background: linear-gradient(transparent, rgba(8,8,16,0.88)); display: flex; justify-content: space-between; align-items: flex-end; pointer-events: none; }
+.music-tile-overlay .name { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg); }
+.music-tile-overlay .arr { font-family: 'JetBrains Mono', monospace; color: var(--fg-mute); transition: color 0.2s, transform 0.2s; font-size: 14px; }
+.music-tile:hover .music-tile-overlay .arr { color: var(--neon-amber); transform: translate(3px, -3px); text-shadow: 0 0 6px var(--neon-amber); }
 
 /* ===================== MERCH BANNER ===================== */
 .merch-banner {
@@ -1215,7 +1214,10 @@ const musicIcons = {
 const musicNames = { spotify: 'Spotify', appleMusic: 'Apple Music', soundcloud: 'SoundCloud' };
 const musicSubs = { spotify: 'stream.01', appleMusic: 'stream.02', soundcloud: 'stream.03' };
 document.getElementById('musicGrid').innerHTML = Object.entries(CONFIG.MUSIC).filter(([k,v]) => v).map(([k,v]) =>
-  `<a class="music-tile" href="${v}" target="_blank" rel="noopener">${musicIcons[k]}<div><div class="name">${musicNames[k]}</div><div class="sub">${musicSubs[k]}</div></div></a>`
+  `<a class="music-tile" href="${v}" target="_blank" rel="noopener">
+    <img class="music-tile-img" src="music-${k === 'appleMusic' ? 'apple' : k}.svg" alt="Lucid Rob on ${musicNames[k]}"/>
+    <div class="music-tile-overlay"><div class="name">${musicNames[k]}</div><div class="arr">→</div></div>
+  </a>`
 ).join('');
 
 // Merch
