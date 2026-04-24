@@ -59,6 +59,8 @@ const buildPage = (post) => {
   const dateStr = formatDate(post.date);
   const bodyHtml = renderBody(post.body);
   const pageTitle = `${post.title} | Lucid Rob`;
+  const ogImagePath = post.image || `/og/${slug}.png`;
+  const ogImage = ogImagePath.startsWith('http') ? ogImagePath : `${SITE_URL}${ogImagePath}`;
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -74,7 +76,7 @@ const buildPage = (post) => {
     datePublished: isoDate,
     dateModified: isoDate,
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-    image: OG_IMAGE
+    image: ogImage
   };
 
   return `<!DOCTYPE html>
@@ -89,7 +91,7 @@ const buildPage = (post) => {
 <link rel="canonical" href="${escAttr(url)}" />
 <meta property="og:title" content="${escAttr(post.title)}"/>
 <meta property="og:description" content="${escAttr(post.excerpt)}"/>
-<meta property="og:image" content="${escAttr(OG_IMAGE)}"/>
+<meta property="og:image" content="${escAttr(ogImage)}"/>
 <meta property="og:url" content="${escAttr(url)}"/>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="LUCIDROB.COM"/>
@@ -98,7 +100,7 @@ const buildPage = (post) => {
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="${escAttr(post.title)}"/>
 <meta name="twitter:description" content="${escAttr(post.excerpt)}"/>
-<meta name="twitter:image" content="${escAttr(OG_IMAGE)}"/>
+<meta name="twitter:image" content="${escAttr(ogImage)}"/>
 <meta name="twitter:creator" content="@LucidRob"/>
 <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
 

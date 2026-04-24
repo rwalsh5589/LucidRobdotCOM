@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow" cx="20%" cy="28%" r="70%">
+      <stop offset="0" stop-color="#ff006e" stop-opacity="0.28"/>
+      <stop offset="0.55" stop-color="#ff006e" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowR" cx="80%" cy="70%" r="60%">
+      <stop offset="0" stop-color="#ff006e" stop-opacity="0.18"/>
+      <stop offset="0.6" stop-color="#ff006e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="stripe" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff006e" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#ff006e" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ff006e" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ff006e" stroke-width="0.5" stroke-opacity="0.08"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="#0a0a0f"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect width="1200" height="630" fill="url(#glowR)"/>
+
+  
+    <g transform="translate(870 315)">
+      <circle cx="-60" cy="0" r="140" fill="none" stroke="#ff006e" stroke-width="3" opacity="0.9"/>
+      <circle cx="60" cy="0" r="140" fill="none" stroke="#ff006e" stroke-width="3" opacity="0.55"/>
+      <circle cx="-60" cy="0" r="140" fill="#ff006e" opacity="0.1"/>
+      <circle cx="60" cy="0" r="140" fill="#ff006e" opacity="0.1"/>
+      <ellipse cx="-60" cy="-30" rx="42" ry="52" fill="#ff006e" opacity="0.25"/>
+      <ellipse cx="60" cy="-30" rx="42" ry="52" fill="#ff006e" opacity="0.2"/>
+      <path d="M -110 80 Q -60 40 -10 80" fill="none" stroke="#ff006e" stroke-width="3" opacity="0.6"/>
+      <path d="M 10 80 Q 60 40 110 80" fill="none" stroke="#ff006e" stroke-width="3" opacity="0.45"/>
+    </g>
+
+  <rect x="0" y="0" width="1200" height="2" fill="url(#stripe)"/>
+  <rect x="0" y="628" width="1200" height="2" fill="url(#stripe)"/>
+
+  <text x="64" y="80" font-family="'JetBrains Mono','Menlo',monospace" font-size="16" font-weight="600" fill="#ff006e" letter-spacing="0.22em" opacity="0.95">// FIELD_NOTES</text>
+  <text x="64" y="108" font-family="'JetBrains Mono','Menlo',monospace" font-size="14" font-weight="500" fill="#c9c9d1" letter-spacing="0.18em" opacity="0.75">CELEBRITY_CLONES</text>
+
+  <rect x="64" y="140" width="72" height="3" fill="#ff006e" opacity="0.85"/>
+
+  <text x="64" y="250" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif" font-size="56" font-weight="700" fill="#f5f5f7" letter-spacing="-0.015em">The Celebrity Clone</text>
+      <text x="64" y="316" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif" font-size="56" font-weight="700" fill="#f5f5f7" letter-spacing="-0.015em">Conspiracy: Why</text>
+      <text x="64" y="382" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif" font-size="56" font-weight="700" fill="#f5f5f7" letter-spacing="-0.015em">Millions of People</text>
+      <text x="64" y="448" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif" font-size="56" font-weight="700" fill="#f5f5f7" letter-spacing="-0.015em">Think Selena Gomez Is</text>
+      <text x="64" y="514" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif" font-size="56" font-weight="700" fill="#f5f5f7" letter-spacing="-0.015em">a Fake</text>
+
+  <text x="64" y="602" font-family="'JetBrains Mono','Menlo',monospace" font-size="15" font-weight="500" fill="#9a9aa5" letter-spacing="0.14em">2026.04.23  /  LUCID ROB</text>
+
+  <text x="1136" y="585" text-anchor="end" font-family="'JetBrains Mono','Menlo',monospace" font-size="17" font-weight="700" fill="#ff006e" letter-spacing="0.22em" opacity="0.95">LUCIDROB.COM</text>
+  <rect x="980" y="600" width="156" height="2" fill="#ff006e" opacity="0.7"/>
+</svg>
