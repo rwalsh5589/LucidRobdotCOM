@@ -280,16 +280,6 @@
   </div>
 </footer>
 
-<!-- BLOG MODAL -->
-<div class="modal-backdrop" id="modalBackdrop">
-  <div class="modal">
-    <button class="modal-close" id="modalClose">×</button>
-    <div class="modal-date mono" id="modalDate"></div>
-    <h2 id="modalTitle"></h2>
-    <div class="modal-body" id="modalBody"></div>
-  </div>
-</div>
-
 <script>
 // Date + session
 const d = new Date();
@@ -377,37 +367,13 @@ document.getElementById('musicGrid').innerHTML = Object.entries(CONFIG.MUSIC).fi
 ).join('');
 
 
-// Blog
+// Blog ... each card links to its own post URL
 const postsList = document.getElementById('postsList');
-postsList.innerHTML = POSTS.slice(0, 3).map((p, i) => {
+postsList.innerHTML = POSTS.slice(0, 3).map((p) => {
   const dt = new Date(p.date).toISOString().slice(0,10).replace(/-/g, '.');
-  return `<div class="post" data-idx="${i}"><div class="post-date">${dt}</div><div><h3>${p.title}</h3><p class="excerpt">${p.excerpt}</p></div><div class="arrow">→</div></div>`;
+  const href = `/blog/${p.slug}`;
+  return `<a class="post" href="${href}"><div class="post-date">${dt}</div><div><h3>${p.title}</h3><p class="excerpt">${p.excerpt}</p></div><div class="arrow">→</div></a>`;
 }).join('');
-
-const modalBackdrop = document.getElementById('modalBackdrop');
-const modalTitle = document.getElementById('modalTitle');
-const modalDate = document.getElementById('modalDate');
-const modalBody = document.getElementById('modalBody');
-postsList.addEventListener('click', (e) => {
-  const el = e.target.closest('.post');
-  if (!el) return;
-  const post = POSTS[+el.dataset.idx];
-  modalTitle.textContent = post.title;
-  modalDate.textContent = new Date(post.date).toISOString().slice(0,10).replace(/-/g, '.');
-  modalBody.innerHTML = post.body.split('\n\n').map(p => {
-    const trimmed = p.trim();
-    const isSubhead = trimmed.length < 90 && !trimmed.endsWith('.') && !trimmed.endsWith('!') && !trimmed.endsWith('"');
-    const linked = trimmed.replace(/(https?:\/\/[^\s<]+|(?:www\.)?youtube\.com\/[^\s<]+)/gi, (url) => {
-      const href = url.startsWith('http') ? url : 'https://' + url;
-      return `<a href="${href}" target="_blank" rel="noopener" style="color:var(--neon-cyan);text-decoration:underline;text-underline-offset:3px;">${url}</a>`;
-    });
-    return isSubhead ? `<h3>${trimmed}</h3>` : `<p>${linked}</p>`;
-  }).join('');
-  modalBackdrop.classList.add('open');
-});
-document.getElementById('modalClose').addEventListener('click', () => modalBackdrop.classList.remove('open'));
-modalBackdrop.addEventListener('click', (e) => { if (e.target === modalBackdrop) modalBackdrop.classList.remove('open'); });
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape') modalBackdrop.classList.remove('open'); });
 
 // Newsletter
 const nlForm = document.getElementById('newsletterForm');

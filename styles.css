@@ -949,3 +949,28 @@ footer::before {
 
 /* Blog "View All" CTA below the home posts list */
 .blog-view-all { text-align: center; margin-top: 48px; }
+
+/* ===================== BLOG POST PAGE ===================== */
+.post-article { padding-top: 48px; }
+.post-article-inner { max-width: 780px; margin: 0 auto; }
+.post-article-meta { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-bottom: 20px; margin-bottom: 28px; border-bottom: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--fg-mute); letter-spacing: 0.12em; }
+.post-article-back { color: var(--fg-mute); transition: color 0.2s; }
+.post-article-back:hover { color: var(--neon-cyan); text-shadow: 0 0 6px rgba(0, 240, 255, 0.45); }
+.post-article-back .arrow { margin-right: 6px; }
+.post-article-date { text-transform: uppercase; }
+.post-article-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(32px, 4.2vw, 46px); font-weight: 700; line-height: 1.12; letter-spacing: -0.015em; margin-bottom: 20px; color: var(--fg); }
+.post-article-excerpt { font-family: 'Space Grotesk', sans-serif; font-size: 18px; line-height: 1.55; color: var(--fg-dim); font-style: italic; border-left: 2px solid var(--neon-pink); padding: 6px 0 6px 18px; margin-bottom: 40px; box-shadow: -6px 0 12px -10px rgba(255, 0, 110, 0.6); }
+.post-article-body { font-size: 17px; line-height: 1.78; color: var(--fg-dim); }
+.post-article-body p { margin-bottom: 20px; }
+.post-article-body h2 { font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; color: var(--fg); margin: 42px 0 16px; line-height: 1.25; letter-spacing: -0.01em; }
+.post-article-body h2:first-child { margin-top: 0; }
+.post-article-body a { color: var(--neon-cyan); text-decoration: underline; text-underline-offset: 3px; }
+.post-article-body a:hover { text-shadow: 0 0 8px rgba(0, 240, 255, 0.45); }
+
+.post-article-share { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--line); display: flex; gap: 12px; flex-wrap: wrap; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; }
+.post-article-share .mono { color: var(--fg-mute); margin-right: 8px; }
+.post-article-share a { color: var(--fg-dim); text-decoration: none; padding: 8px 14px; border: 1px solid var(--line-bright); transition: color 0.2s, border-color 0.2s, box-shadow 0.2s; }
+.post-article-share a:hover { color: var(--neon-cyan); border-color: var(--neon-cyan); box-shadow: 0 0 10px rgba(0, 240, 255, 0.25); }
+
+.post-article-join { padding-top: 40px; }
+.post-article-join .join-grid { grid-template-columns: 1fr; max-width: 780px; margin: 0 auto; }
