@@ -23,13 +23,7 @@ const slugify = (s) => s.toLowerCase()
   .replace(/^-|-$/g, '')
   .slice(0, 80);
 
-const linkify = (s) => s.replace(
-  /(https?:\/\/[^\s<]+|(?:www\.)?youtube\.com\/[^\s<]+)/gi,
-  (url) => {
-    const href = url.startsWith('http') ? url : 'https://' + url;
-    return `<a href="${escAttr(href)}" target="_blank" rel="noopener" style="color:var(--neon-cyan);text-decoration:underline;text-underline-offset:3px;">${esc(url)}</a>`;
-  }
-);
+const LINK_STYLE = 'color:var(--neon-cyan);text-decoration:underline;text-underline-offset:3px;';
 
 const renderBody = (body) => body.split('\n\n').map((chunk) => {
   const trimmed = chunk.trim();
@@ -39,7 +33,37 @@ const renderBody = (body) => body.split('\n\n').map((chunk) => {
     && !trimmed.endsWith('!')
     && !trimmed.endsWith('"');
   if (isSubhead) return `<h2>${esc(trimmed)}</h2>`;
-  return `<p>${linkify(esc(trimmed))}</p>`;
+
+  // Extract [text](url) markdown links to placeholders so escaping doesn't
+  // mangle the URL or angle brackets inside the rendered <a> tag later.
+  const mdLinks = [];
+  let text = trimmed.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, url) => {
+    const i = mdLinks.length;
+    mdLinks.push({ label, url });
+    return `\x00MDLINK${i}\x00`;
+  });
+
+  text = esc(text);
+
+  // Auto-link bare URLs (only ones not inside a markdown link, since those
+  // are already extracted into placeholders above).
+  text = text.replace(
+    /(https?:\/\/[^\s<]+|(?:www\.)?youtube\.com\/[^\s<]+)/gi,
+    (url) => {
+      const href = url.startsWith('http') ? url : 'https://' + url;
+      return `<a href="${escAttr(href)}" target="_blank" rel="noopener" style="${LINK_STYLE}">${url}</a>`;
+    }
+  );
+
+  // Restore markdown links. Internal links (start with /) stay in-tab.
+  text = text.replace(/\x00MDLINK(\d+)\x00/g, (_, i) => {
+    const { label, url } = mdLinks[+i];
+    const isInternal = url.startsWith('/');
+    const ext = isInternal ? '' : ' target="_blank" rel="noopener"';
+    return `<a href="${escAttr(url)}"${ext} style="${LINK_STYLE}">${esc(label)}</a>`;
+  });
+
+  return `<p>${text}</p>`;
 }).join('\n');
 
 const formatDate = (iso) => new Date(iso).toISOString().slice(0, 10).replace(/-/g, '.');
