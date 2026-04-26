@@ -1,6 +1,7 @@
   const POSTS = [
     {
       slug: "hollow-moon-theory",
+      tags: ["moon", "nasa", "space", "aliens"],
       title: "Hollow Moon Theory Explained: Why Our Moon Might Actually Be a Spaceship (And Why the Debunks Don't Hold Up)",
       date: "2026-04-24",
       excerpt: "The hollow moon theory used to be Soviet fringe speculation. Then you look at the Apollo seismic data, the moon's impossible density, and the isotopic crisis nobody wants to talk about. Here's the case for why our moon might literally be a giant hollow spaceship ... and why I actually think it probably is.",
@@ -8,6 +9,7 @@
     },
     {
       slug: "artemis-ii-fake-moon-landing",
+      tags: ["moon", "nasa", "space", "tiktok", "ai"],
       title: "Artemis II Fake Moon Landing Conspiracy Explained: Why Millions Think NASA Just Faked the Moon Again",
       date: "2026-04-24",
       excerpt: "NASA just sent four humans around the moon for the first time since 1972. TikTok has already decided it was AI. Here's why the moon hoax is back. And why it never died.",
@@ -15,6 +17,7 @@
     },
     {
       slug: "baba-vanga-2026-alien-prediction",
+      tags: ["aliens", "prophecy", "tiktok"],
       title: "Baba Vanga 2026 Alien Spacecraft Prediction Explained: Why TikTok Thinks Aliens Land in November",
       date: "2026-04-23",
       excerpt: "A blind Bulgarian mystic who died in 1996 has decided, via TikTok, that aliens are landing in November 2026. Let's actually look at what she said. And what she didn't.",
@@ -22,6 +25,7 @@
     },
     {
       slug: "celebrity-clone-conspiracy",
+      tags: ["celebrity", "tiktok", "ai"],
       title: "The Celebrity Clone Conspiracy: Why Millions of People Think Selena Gomez Is a Fake",
       date: "2026-04-23",
       excerpt: "TikTok has decided Selena Gomez died in 2017 and got replaced by a clone. She literally made a joke about it on April Fool's Day. And somehow that made people MORE convinced. Let's talk about this.",
@@ -29,6 +33,7 @@
     },
     {
       slug: "dead-internet-theory",
+      tags: ["internet", "ai", "tech"],
       title: "Dead Internet Theory Explained: Why the Web Actually Died (And You Didn't Notice)",
       date: "2026-04-15",
       excerpt: "The Dead Internet Theory used to be a fringe conspiracy on an obscure forum. Now Reddit's own co-founder says it's real. Here's what's going on and why it matters.",
@@ -36,6 +41,7 @@
     },
     {
       slug: "epstein-files-conspiracy",
+      tags: ["scandal", "power", "politics"],
       title: "The Epstein Files Conspiracy Theories Won't Die ... Here's Why (And What We Actually Know)",
       date: "2026-03-22",
       excerpt: "Every few months the Epstein files are back in the news. Every few months, the conspiracy theories multiply. Let's separate what's documented from what's vibes.",
@@ -43,6 +49,7 @@
     },
     {
       slug: "ai-deepfakes-spotting-guide",
+      tags: ["ai", "tech", "fakes"],
       title: "AI Deepfakes Explained: How to Spot Fake Videos in 2026 (Before They Cost You)",
       date: "2026-02-28",
       excerpt: "AI deepfakes got good. Scary good. If you think you can still tell what's real and what isn't, you're probably already getting fooled. Here's the field guide.",
@@ -50,6 +57,7 @@
     },
     {
       slug: "elvis-bob-joyce-theory",
+      tags: ["celebrity", "music", "tiktok"],
       title: "Is Elvis Still Alive? The Bob Joyce Conspiracy Theory Explained",
       date: "2026-02-05",
       excerpt: "An Arkansas pastor named Bob Joyce is apparently Elvis Presley in witness protection. That's the claim. Let's actually take it seriously for thirty seconds.",
@@ -57,6 +65,7 @@
     },
     {
       slug: "nasa-project-anchor-debunked",
+      tags: ["nasa", "space", "fakes", "tiktok"],
       title: "NASA Project Anchor Debunked: No, Gravity Is Not Turning Off On August 12",
       date: "2026-01-10",
       excerpt: "A viral video claims NASA is warning that Earth will lose gravity for 7 seconds on August 12, 2026. Let me save you the click: that is not how anything works.",

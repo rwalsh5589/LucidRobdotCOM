@@ -5,15 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Blog ... LUCID ROB // lucidrob.com</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
-<meta name="description" content="All conspiracy theory blog posts and field notes from Lucid Rob. New post every Friday ... breakdowns of the trending stuff hitting your feed." />
+<meta name="description" content="All conspiracy theory blog posts and field notes from Lucid Rob. New post every week ... breakdowns of the trending stuff hitting your feed." />
+<link rel="canonical" href="https://lucidrob.com/blog" />
 <meta property="og:title" content="Blog ... LUCIDROB.COM"/>
-<meta property="og:description" content="Conspiracy theory breakdowns, weekly. New post every Friday."/>
+<meta property="og:description" content="Conspiracy theory breakdowns, weekly. Search, tag, and dig in."/>
 <meta property="og:image" content="https://lucidrob.com/og-image.png"/>
-<meta property="og:url" content="https://lucidrob.com/blog.html"/>
+<meta property="og:url" content="https://lucidrob.com/blog"/>
 <meta property="og:type" content="website"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Blog ... LUCIDROB.COM"/>
-<meta name="twitter:description" content="Conspiracy theory breakdowns, weekly. New post every Friday."/>
+<meta name="twitter:description" content="Conspiracy theory breakdowns, weekly. Search, tag, and dig in."/>
 <meta name="twitter:image" content="https://lucidrob.com/og-image.png"/>
 
 <script>
@@ -58,9 +59,30 @@
     <div class="section-header">
       <span class="num">// 05</span>
       <h2 class="neon-sign sign-notes">Field_Notes</h2>
-      <p class="section-desc">Every post. New one every Friday.</p>
+      <p class="section-desc">Every post. New one every week.</p>
     </div>
+
+    <!-- Search + tag controls -->
+    <div class="blog-controls">
+      <div class="search-wrap">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input
+          type="search"
+          id="searchInput"
+          class="search-input"
+          placeholder="Search posts ... title, body, tags"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button id="searchClear" class="search-clear" aria-label="Clear search" hidden>×</button>
+      </div>
+      <div id="tagCloud" class="tag-cloud" aria-label="Browse by tag"></div>
+      <div id="filterBar" class="filter-bar"></div>
+    </div>
+
     <div class="posts" id="postsList"></div>
+    <div id="pagination" class="pagination"></div>
+
     <div class="blog-view-all">
       <a class="btn pink" href="index.html"><span class="arrow">←</span> Back to Home</a>
     </div>
@@ -89,20 +111,206 @@ const socialIcons = {
   youtube:   '<svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>',
   instagram: '<svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>',
   twitter:   '<svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>',
-  tiktok:    '<svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>',
+  tiktok:    '<svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z"/></svg>',
   email:     '<svg viewBox="0 0 24 24"><path d="M0 5v14h24V5H0zm22 2v.5L12 14.4 2 7.5V7h20zM2 17V9.7l10 6.7 10-6.7V17H2z"/></svg>'
 };
 document.getElementById('socialsRow').innerHTML = Object.entries(CONFIG.SOCIALS).filter(([k,v]) => v).map(([k,v]) =>
   `<a class="social-icon" href="${v}" ${k === 'email' ? '' : 'target="_blank" rel="noopener"'} aria-label="${k}">${socialIcons[k]}</a>`
 ).join('');
 
-// Render ALL posts ... each links to its own URL
-const postsList = document.getElementById('postsList');
-postsList.innerHTML = POSTS.map((p) => {
-  const dt = new Date(p.date).toISOString().slice(0,10).replace(/-/g, '.');
-  const href = `/blog/${p.slug}`;
-  return `<a class="post" href="${href}"><div class="post-date">${dt}</div><div><h3>${p.title}</h3><p class="excerpt">${p.excerpt}</p></div><div class="arrow">→</div></a>`;
-}).join('');
+// ====================== BLOG SEARCH / TAGS / PAGINATION ======================
+const POSTS_PER_PAGE = 10;
+
+const postsList   = document.getElementById('postsList');
+const searchInput = document.getElementById('searchInput');
+const searchClear = document.getElementById('searchClear');
+const filterBar   = document.getElementById('filterBar');
+const tagCloud    = document.getElementById('tagCloud');
+const pagination  = document.getElementById('pagination');
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function getState() {
+  const p = new URLSearchParams(window.location.search);
+  return {
+    q:    (p.get('q')   || '').trim(),
+    tag:  (p.get('tag') || '').trim(),
+    page: Math.max(1, parseInt(p.get('page'), 10) || 1)
+  };
+}
+
+function setState(partial, opts = {}) {
+  const cur  = getState();
+  const next = { ...cur, ...partial };
+  if ('q' in partial || 'tag' in partial) next.page = 1;
+  const p = new URLSearchParams();
+  if (next.q)         p.set('q', next.q);
+  if (next.tag)       p.set('tag', next.tag);
+  if (next.page > 1)  p.set('page', next.page);
+  const qs  = p.toString();
+  const url = qs ? `${window.location.pathname}?${qs}` : window.location.pathname;
+  if (opts.replace) history.replaceState({}, '', url);
+  else              history.pushState({}, '', url);
+  render();
+}
+
+function filterPosts({ q, tag }) {
+  let res = POSTS;
+  if (tag) res = res.filter(p => Array.isArray(p.tags) && p.tags.includes(tag));
+  if (q) {
+    const Q = q.toLowerCase();
+    res = res.filter(p => {
+      const haystack = `${p.title} ${p.excerpt} ${(p.tags||[]).join(' ')} ${p.body}`.toLowerCase();
+      return haystack.includes(Q);
+    });
+  }
+  return res;
+}
+
+function renderTagCloud() {
+  const tagCounts = {};
+  POSTS.forEach(p => (p.tags || []).forEach(t => { tagCounts[t] = (tagCounts[t] || 0) + 1; }));
+  const sorted = Object.entries(tagCounts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  if (!sorted.length) { tagCloud.innerHTML = ''; return; }
+  const { tag: activeTag } = getState();
+  tagCloud.innerHTML = `<span class="tag-cloud-label mono">// FILTER_BY_TAG</span>` + sorted.map(([t, n]) =>
+    `<a class="tag-chip ${t === activeTag ? 'active' : ''}" href="/blog?tag=${encodeURIComponent(t)}" data-tag="${esc(t)}">${esc(t)}<span class="tag-count">${n}</span></a>`
+  ).join('');
+}
+
+function render() {
+  const { q, tag, page } = getState();
+
+  if (searchInput.value !== q) searchInput.value = q;
+  searchClear.hidden = !q;
+
+  document.querySelectorAll('.tag-chip').forEach(chip => {
+    chip.classList.toggle('active', chip.dataset.tag === tag && tag !== '');
+  });
+
+  const filtered    = filterPosts({ q, tag });
+  const totalPages  = Math.max(1, Math.ceil(filtered.length / POSTS_PER_PAGE));
+  const safePage    = Math.min(page, totalPages);
+  const startIdx    = (safePage - 1) * POSTS_PER_PAGE;
+  const slice       = filtered.slice(startIdx, startIdx + POSTS_PER_PAGE);
+
+  // Active filter chips
+  const activeBits = [];
+  if (q)   activeBits.push(`<span class="active-filter">search: <em>${esc(q)}</em><button class="active-clear" data-clear="q" aria-label="Clear search">×</button></span>`);
+  if (tag) activeBits.push(`<span class="active-filter">tag: <em>${esc(tag)}</em><button class="active-clear" data-clear="tag" aria-label="Clear tag">×</button></span>`);
+  const matchTotal = filtered.length;
+  const countText = (q || tag)
+    ? `${matchTotal} ${matchTotal === 1 ? 'match' : 'matches'}`
+    : `${POSTS.length} ${POSTS.length === 1 ? 'post' : 'posts'}`;
+  filterBar.innerHTML = `<span class="result-count mono">${countText}</span>` + activeBits.join('') +
+    ((q || tag) ? `<button class="active-clear-all" id="clearAll">clear all</button>` : '');
+
+  // Posts
+  if (slice.length === 0) {
+    postsList.innerHTML = `<div class="empty-state">
+      <p>No posts match.</p>
+      <button class="btn primary" id="emptyClear">Clear filters</button>
+    </div>`;
+  } else {
+    postsList.innerHTML = slice.map(p => {
+      const dt = new Date(p.date).toISOString().slice(0,10).replace(/-/g, '.');
+      const href = `/blog/${p.slug}`;
+      const tagsHtml = (p.tags || []).map(t =>
+        `<a class="tag-chip ${t === tag ? 'active' : ''}" href="/blog?tag=${encodeURIComponent(t)}" data-tag="${esc(t)}">${esc(t)}</a>`
+      ).join('');
+      return `<article class="post" data-href="${href}">
+        <div class="post-date">${dt}</div>
+        <div class="post-body">
+          <h3><a class="post-title-link" href="${href}">${esc(p.title)}</a></h3>
+          <p class="excerpt">${esc(p.excerpt)}</p>
+          ${tagsHtml ? `<div class="post-tags">${tagsHtml}</div>` : ''}
+        </div>
+        <div class="arrow">→</div>
+      </article>`;
+    }).join('');
+  }
+
+  // Pagination
+  if (totalPages > 1) {
+    let pages = '';
+    for (let i = 1; i <= totalPages; i++) {
+      pages += `<button class="page-btn page-num ${i === safePage ? 'active' : ''}" data-page="${i}" aria-label="Go to page ${i}">${i}</button>`;
+    }
+    pagination.innerHTML = `
+      <button class="page-btn page-prev" data-page="${safePage - 1}" ${safePage === 1 ? 'disabled' : ''} aria-label="Previous page">← prev</button>
+      <div class="page-numbers">${pages}</div>
+      <button class="page-btn page-next" data-page="${safePage + 1}" ${safePage === totalPages ? 'disabled' : ''} aria-label="Next page">next →</button>
+    `;
+  } else {
+    pagination.innerHTML = '';
+  }
+}
+
+// Search input (debounced)
+let searchTimer;
+searchInput.addEventListener('input', (e) => {
+  clearTimeout(searchTimer);
+  const v = e.target.value.trim();
+  searchClear.hidden = !v;
+  searchTimer = setTimeout(() => setState({ q: v }), 180);
+});
+
+// Search clear button
+searchClear.addEventListener('click', () => {
+  searchInput.value = '';
+  searchInput.focus();
+  setState({ q: '' });
+});
+
+// Click delegation: tag chips, page buttons, clear buttons, post cards
+document.body.addEventListener('click', (e) => {
+  // Tag chip → filter (intercept link, use pushState)
+  const tagChip = e.target.closest('.tag-chip');
+  if (tagChip && tagChip.dataset.tag) {
+    e.preventDefault();
+    const cur = getState();
+    const newTag = cur.tag === tagChip.dataset.tag ? '' : tagChip.dataset.tag;
+    setState({ tag: newTag });
+    window.scrollTo({ top: document.querySelector('.section-header').offsetTop - 40, behavior: 'smooth' });
+    return;
+  }
+
+  // Pagination
+  const pageBtn = e.target.closest('.page-btn');
+  if (pageBtn && pageBtn.dataset.page && !pageBtn.disabled) {
+    e.preventDefault();
+    setState({ page: parseInt(pageBtn.dataset.page, 10) });
+    window.scrollTo({ top: document.querySelector('.section-header').offsetTop - 40, behavior: 'smooth' });
+    return;
+  }
+
+  // Active filter clear (single)
+  const clearBtn = e.target.closest('.active-clear');
+  if (clearBtn) {
+    e.preventDefault();
+    setState({ [clearBtn.dataset.clear]: '' });
+    return;
+  }
+
+  // Clear all
+  if (e.target.id === 'clearAll' || e.target.id === 'emptyClear') {
+    setState({ q: '', tag: '' });
+    return;
+  }
+
+  // Post card → navigate (unless click was on a link inside it)
+  const postEl = e.target.closest('.post');
+  if (postEl && postEl.dataset.href && !e.target.closest('a')) {
+    window.location.href = postEl.dataset.href;
+  }
+});
+
+window.addEventListener('popstate', render);
+
+renderTagCloud();
+render();
 </script>
 
 </body>

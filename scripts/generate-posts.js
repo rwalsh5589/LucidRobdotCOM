@@ -85,6 +85,12 @@ const buildPage = (post) => {
   const pageTitle = `${post.title} | Lucid Rob`;
   const ogImagePath = post.image || `/og/${slug}.png`;
   const ogImage = ogImagePath.startsWith('http') ? ogImagePath : `${SITE_URL}${ogImagePath}`;
+  const tags = Array.isArray(post.tags) ? post.tags : [];
+  const tagsHtml = tags.length
+    ? `<div class="post-article-tags">${tags.map((t) =>
+        `<a class="tag-chip" href="/blog?tag=${encodeURIComponent(t)}">${esc(t)}</a>`
+      ).join('')}</div>`
+    : '';
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -171,6 +177,7 @@ const buildPage = (post) => {
       </div>
       <h1 class="post-article-title">${esc(post.title)}</h1>
       <p class="post-article-excerpt">${esc(post.excerpt)}</p>
+      ${tagsHtml}
       <div class="post-article-body">
 ${bodyHtml}
       </div>
