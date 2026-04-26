@@ -76,7 +76,6 @@
         />
         <button id="searchClear" class="search-clear" aria-label="Clear search" hidden>×</button>
       </div>
-      <div id="tagCloud" class="tag-cloud" aria-label="Browse by tag"></div>
       <div id="filterBar" class="filter-bar"></div>
     </div>
 
@@ -125,7 +124,6 @@ const postsList   = document.getElementById('postsList');
 const searchInput = document.getElementById('searchInput');
 const searchClear = document.getElementById('searchClear');
 const filterBar   = document.getElementById('filterBar');
-const tagCloud    = document.getElementById('tagCloud');
 const pagination  = document.getElementById('pagination');
 
 function esc(s) {
@@ -169,17 +167,6 @@ function filterPosts({ q, tag }) {
   return res;
 }
 
-function renderTagCloud() {
-  const tagCounts = {};
-  POSTS.forEach(p => (p.tags || []).forEach(t => { tagCounts[t] = (tagCounts[t] || 0) + 1; }));
-  const sorted = Object.entries(tagCounts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
-  if (!sorted.length) { tagCloud.innerHTML = ''; return; }
-  const { tag: activeTag } = getState();
-  tagCloud.innerHTML = `<span class="tag-cloud-label mono">// FILTER_BY_TAG</span>` + sorted.map(([t, n]) =>
-    `<a class="tag-chip ${t === activeTag ? 'active' : ''}" href="/blog?tag=${encodeURIComponent(t)}" data-tag="${esc(t)}">${esc(t)}<span class="tag-count">${n}</span></a>`
-  ).join('');
-}
-
 function render() {
   const { q, tag, page } = getState();
 
@@ -217,15 +204,11 @@ function render() {
     postsList.innerHTML = slice.map(p => {
       const dt = new Date(p.date).toISOString().slice(0,10).replace(/-/g, '.');
       const href = `/blog/${p.slug}`;
-      const tagsHtml = (p.tags || []).map(t =>
-        `<a class="tag-chip ${t === tag ? 'active' : ''}" href="/blog?tag=${encodeURIComponent(t)}" data-tag="${esc(t)}">${esc(t)}</a>`
-      ).join('');
       return `<article class="post" data-href="${href}">
         <div class="post-date">${dt}</div>
         <div class="post-body">
           <h3><a class="post-title-link" href="${href}">${esc(p.title)}</a></h3>
           <p class="excerpt">${esc(p.excerpt)}</p>
-          ${tagsHtml ? `<div class="post-tags">${tagsHtml}</div>` : ''}
         </div>
         <div class="arrow">→</div>
       </article>`;
@@ -309,7 +292,6 @@ document.body.addEventListener('click', (e) => {
 
 window.addEventListener('popstate', render);
 
-renderTagCloud();
 render();
 </script>
 
