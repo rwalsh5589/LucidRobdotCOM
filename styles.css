@@ -281,6 +281,7 @@ nav a:hover::before { width: 100%; }
 }
 .hero .subtitle .hl-pink { color: var(--neon-pink); font-style: normal; text-shadow: 0 0 8px rgba(255, 0, 110, 0.4); }
 .hero .subtitle .hl-cyan { color: var(--neon-cyan); font-style: normal; text-shadow: 0 0 8px rgba(0, 240, 255, 0.4); }
+.hl-cyan { color: var(--neon-cyan); font-weight: 600; text-shadow: 0 0 8px rgba(0, 240, 255, 0.4); }
 
 .hero .cta-row { display: flex; gap: 16px; flex-wrap: wrap; }
 
