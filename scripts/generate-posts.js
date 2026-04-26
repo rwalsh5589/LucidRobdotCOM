@@ -23,8 +23,6 @@ const slugify = (s) => s.toLowerCase()
   .replace(/^-|-$/g, '')
   .slice(0, 80);
 
-const LINK_STYLE = 'color:var(--neon-cyan);text-decoration:underline;text-underline-offset:3px;';
-
 const renderBody = (body) => body.split('\n\n').map((chunk) => {
   const trimmed = chunk.trim();
   if (!trimmed) return '';
@@ -46,12 +44,12 @@ const renderBody = (body) => body.split('\n\n').map((chunk) => {
   text = esc(text);
 
   // Auto-link bare URLs (only ones not inside a markdown link, since those
-  // are already extracted into placeholders above).
+  // are already extracted into placeholders above). Styling lives in CSS.
   text = text.replace(
     /(https?:\/\/[^\s<]+|(?:www\.)?youtube\.com\/[^\s<]+)/gi,
     (url) => {
       const href = url.startsWith('http') ? url : 'https://' + url;
-      return `<a href="${escAttr(href)}" target="_blank" rel="noopener" style="${LINK_STYLE}">${url}</a>`;
+      return `<a href="${escAttr(href)}" target="_blank" rel="noopener">${url}</a>`;
     }
   );
 
@@ -60,7 +58,7 @@ const renderBody = (body) => body.split('\n\n').map((chunk) => {
     const { label, url } = mdLinks[+i];
     const isInternal = url.startsWith('/');
     const ext = isInternal ? '' : ' target="_blank" rel="noopener"';
-    return `<a href="${escAttr(url)}"${ext} style="${LINK_STYLE}">${esc(label)}</a>`;
+    return `<a href="${escAttr(url)}"${ext}>${esc(label)}</a>`;
   });
 
   return `<p>${text}</p>`;
