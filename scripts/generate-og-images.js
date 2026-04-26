@@ -29,6 +29,7 @@ const PALETTE = {
 
 // Per-post theming (accent + label) ... colors aligned to new palette
 const THEMES = {
+  'boston-molasses-flood-1919':      { accent: PALETTE.orange,  label: 'BOSTON_1919'             },
   'anunnaki-ancient-aliens':         { accent: PALETTE.gold,    label: 'ANUNNAKI_THEORY'         },
   'hollow-moon-theory':              { accent: PALETTE.teal,    label: 'HOLLOW_MOON_THEORY'      },
   'artemis-ii-fake-moon-landing':    { accent: PALETTE.violet,  label: 'ARTEMIS_II_HOAX'         },
@@ -42,6 +43,35 @@ const THEMES = {
 };
 
 const MOTIFS = {
+  'boston-molasses-flood-1919': (c) => `
+    <g transform="translate(940 320)">
+      <ellipse cx="0" cy="-110" rx="78" ry="18" fill="none" stroke="${c}" stroke-width="3" opacity="0.55"/>
+      <line x1="-78" y1="-110" x2="-78" y2="-15" stroke="${c}" stroke-width="3" opacity="0.55"/>
+      <line x1="78"  y1="-110" x2="78"  y2="-15" stroke="${c}" stroke-width="3" opacity="0.55"/>
+      <ellipse cx="0" cy="-15"  rx="78" ry="14" fill="none" stroke="${c}" stroke-width="3" opacity="0.55"/>
+      <path d="M -42 -78 L -52 -50 L -38 -32 L -58 -8" stroke="${c}" stroke-width="3" fill="none" opacity="0.95" stroke-linejoin="round"/>
+      <path d="M 26 -90 L 36 -64 L 22 -42 L 44 -22" stroke="${c}" stroke-width="2.5" fill="none" opacity="0.85" stroke-linejoin="round"/>
+      <path d="M -200 50
+               Q -160 12 -120 50
+               Q -80 8  -40 50
+               Q 0   6  40  50
+               Q 80  10 120 50
+               Q 160 4  200 50
+               L 200 200 L -200 200 Z"
+        fill="${c}" opacity="0.32" stroke="${c}" stroke-width="2"/>
+      <path d="M -200 110
+               Q -160 78  -120 110
+               Q -80 70   -40 110
+               Q 0   72   40  110
+               Q 80  68   120 110
+               Q 160 76   200 110
+               L 200 220 L -200 220 Z"
+        fill="${c}" opacity="0.5"/>
+      <circle cx="-150" cy="60" r="6" fill="${PALETTE.ink}" opacity="0.45"/>
+      <circle cx="-110" cy="78" r="4" fill="${PALETTE.ink}" opacity="0.45"/>
+      <circle cx="120" cy="64" r="5" fill="${PALETTE.ink}" opacity="0.45"/>
+      <circle cx="60" cy="92" r="3" fill="${PALETTE.ink}" opacity="0.45"/>
+    </g>`,
   'anunnaki-ancient-aliens': (c) => `
     <g transform="translate(940 320)">
       <circle cx="0" cy="0" r="55" fill="${c}" opacity="0.18"/>
