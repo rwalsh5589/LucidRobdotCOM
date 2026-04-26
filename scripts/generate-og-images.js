@@ -11,6 +11,7 @@ const postsSrc = fs.readFileSync(path.join(ROOT, 'posts.js'), 'utf-8');
 const POSTS = new Function(`${postsSrc}; return POSTS;`)();
 
 const THEMES = {
+  'anunnaki-ancient-aliens':         { accent: '#ffb400', label: 'ANUNNAKI_THEORY'         },
   'hollow-moon-theory':              { accent: '#00f0ff', label: 'HOLLOW_MOON_THEORY'      },
   'artemis-ii-fake-moon-landing':    { accent: '#b400ff', label: 'ARTEMIS_II_HOAX'         },
   'baba-vanga-2026-alien-prediction':{ accent: '#ffb400', label: 'VANGA_PROPHECY'          },
@@ -23,6 +24,28 @@ const THEMES = {
 };
 
 const MOTIFS = {
+  'anunnaki-ancient-aliens': (c) => `
+    <g transform="translate(870 315)">
+      <circle cx="0" cy="0" r="55" fill="${c}" opacity="0.18"/>
+      <circle cx="0" cy="0" r="55" fill="none" stroke="${c}" stroke-width="3" opacity="0.95"/>
+      <circle cx="0" cy="0" r="32" fill="none" stroke="${c}" stroke-width="2" opacity="0.65"/>
+      <circle cx="0" cy="0" r="10" fill="${c}" opacity="0.95"/>
+      <path d="M -50 -5 Q -110 -35 -195 -25 L -200 8 Q -180 28 -150 30 L -90 32 Q -60 28 -50 15 Z" fill="${c}" opacity="0.18" stroke="${c}" stroke-width="2"/>
+      <line x1="-60" y1="-3" x2="-180" y2="-28" stroke="${c}" stroke-width="1.5" opacity="0.55"/>
+      <line x1="-60" y1="6"  x2="-180" y2="-12" stroke="${c}" stroke-width="1.5" opacity="0.45"/>
+      <line x1="-60" y1="15" x2="-180" y2="3"   stroke="${c}" stroke-width="1.5" opacity="0.4"/>
+      <line x1="-60" y1="24" x2="-160" y2="22"  stroke="${c}" stroke-width="1.5" opacity="0.35"/>
+      <path d="M 50 -5 Q 110 -35 195 -25 L 200 8 Q 180 28 150 30 L 90 32 Q 60 28 50 15 Z" fill="${c}" opacity="0.18" stroke="${c}" stroke-width="2"/>
+      <line x1="60" y1="-3" x2="180" y2="-28" stroke="${c}" stroke-width="1.5" opacity="0.55"/>
+      <line x1="60" y1="6"  x2="180" y2="-12" stroke="${c}" stroke-width="1.5" opacity="0.45"/>
+      <line x1="60" y1="15" x2="180" y2="3"   stroke="${c}" stroke-width="1.5" opacity="0.4"/>
+      <line x1="60" y1="24" x2="160" y2="22"  stroke="${c}" stroke-width="1.5" opacity="0.35"/>
+      <line x1="-30" y1="55" x2="-50" y2="120" stroke="${c}" stroke-width="2.5" opacity="0.7"/>
+      <line x1="-12" y1="55" x2="-18" y2="135" stroke="${c}" stroke-width="3" opacity="0.85"/>
+      <line x1="0"   y1="55" x2="0"   y2="145" stroke="${c}" stroke-width="3.5" opacity="0.95"/>
+      <line x1="12"  y1="55" x2="18"  y2="135" stroke="${c}" stroke-width="3" opacity="0.85"/>
+      <line x1="30"  y1="55" x2="50"  y2="120" stroke="${c}" stroke-width="2.5" opacity="0.7"/>
+    </g>`,
   'hollow-moon-theory': (c) => `
     <g transform="translate(870 315)">
       <circle cx="0" cy="0" r="210" fill="none" stroke="${c}" stroke-width="2" opacity="0.35"/>

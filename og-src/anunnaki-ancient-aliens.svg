@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow" cx="20%" cy="28%" r="70%">
+      <stop offset="0" stop-color="#ffb400" stop-opacity="0.28"/>
+      <stop offset="0.55" stop-color="#ffb400" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowR" cx="80%" cy="70%" r="60%">
+      <stop offset="0" stop-color="#ffb400" stop-opacity="0.18"/>
+      <stop offset="0.6" stop-color="#ffb400" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="stripe" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffb400" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#ffb400" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffb400" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffb400" stroke-width="0.5" stroke-opacity="0.08"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="#0a0a0f"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect width="1200" height="630" fill="url(#glowR)"/>
+
+  
+    <g transform="translate(870 315)">
+      <circle cx="0" cy="0" r="55" fill="#ffb400" opacity="0.18"/>
+      <circle cx="0" cy="0" r="55" fill="none" stroke="#ffb400" stroke-width="3" opacity="0.95"/>
+      <circle cx="0" cy="0" r="32" fill="none" stroke="#ffb400" stroke-width="2" opacity="0.65"/>
+      <circle cx="0" cy="0" r="10" fill="#ffb400" opacity="0.95"/>
+      <path d="M -50 -5 Q -110 -35 -195 -25 L -200 8 Q -180 28 -150 30 L -90 32 Q -60 28 -50 15 Z" fill="#ffb400" opacity="0.18" stroke="#ffb400" stroke-width="2"/>
+      <line x1="-60" y1="-3" x2="-180" y2="-28" stroke="#ffb400" stroke-width="1.5" opacity="0.55"/>
+      <line x1="-60" y1="6"  x2="-180" y2="-12" stroke="#ffb400" stroke-width="1.5" opacity="0.45"/>
+      <line x1="-60" y1="15" x2="-180" y2="3"   stroke="#ffb400" stroke-width="1.5" opacity="0.4"/>
+      <line x1="-60" y1="24" x2="-160" y2="22"  stroke="#ffb400" stroke-width="1.5" opacity="0.35"/>
+      <path d="M 50 -5 Q 110 -35 195 -25 L 200 8 Q 180 28 150 30 L 90 32 Q 60 28 50 15 Z" fill="#ffb400" opacity="0.18" stroke="#ffb400" stroke-width="2"/>
+      <line x1="60" y1="-3" x2="180" y2="-28" stroke="#ffb400" stroke-width="1.5" opacity="0.55"/>
+      <line x1="60" y1="6"  x2="180" y2="-12" stroke="#ffb400" stroke-width="1.5" opacity="0.45"/>
+      <line x1="60" y1="15" x2="180" y2="3"   stroke="#ffb400" stroke-width="1.5" opacity="0.4"/>
+      <line x1="60" y1="24" x2="160" y2="22"  stroke="#ffb400" stroke-width="1.5" opacity="0.35"/>
+      <line x1="-30" y1="55" x2="-50" y2="120" stroke="#ffb400" stroke-width="2.5" opacity="0.7"/>
+      <line x1="-12" y1="55" x2="-18" y2="135" stroke="#ffb400" stroke-width="3" opacity="0.85"/>
+      <line x1="0"   y1="55" x2="0"   y2="145" stroke="#ffb400" stroke-width="3.5" opacity="0.95"/>
+      <line x1="12"  y1="55" x2="18"  y2="135" stroke="#ffb400" stroke-width="3" opacity="0.85"/>
+      <line x1="30"  y1="55" x2="50"  y2="120" stroke="#ffb400" stroke-width="2.5" opacity="0.7"/>
+    </g>
+
+  <rect x="0" y="0" width="1200" height="2" fill="url(#stripe)"/>
+  <rect x="0" y="628" width="1200" height="2" fill="url(#stripe)"/>
+
+  <text x="64" y="80" font-family="'JetBrains Mono','Menlo',monospace" font-size="16" font-weight="600" fill="#ffb400" letter-spacing="0.22em" opacity="0.95">// FIELD_NOTES</text>
+  <text x="64" y="108" font-family="'JetBrains Mono','Menlo',monospace" font-size="14" font-weight="500" fill="#c9c9d1" letter-spacing="0.18em" opacity="0.75">ANUNNAKI_THEORY</text>
+
+  <rect x="64" y="140" width="72" height="3" fill="#ffb400" opacity="0.85"/>
+
+  <text x="64" y="250" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif" font-size="46" font-weight="700" fill="#f5f5f7" letter-spacing="-0.015em">The Anunnaki Conspiracy</text>
+      <text x="64" y="306" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif" font-size="46" font-weight="700" fill="#f5f5f7" letter-spacing="-0.015em">Explained: Did Ancient</text>
+      <text x="64" y="362" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif" font-size="46" font-weight="700" fill="#f5f5f7" letter-spacing="-0.015em">Sumerian Gods Genetically</text>
+      <text x="64" y="418" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif" font-size="46" font-weight="700" fill="#f5f5f7" letter-spacing="-0.015em">Engineer Humanity?</text>
+
+  <text x="64" y="496" font-family="'JetBrains Mono','Menlo',monospace" font-size="15" font-weight="500" fill="#9a9aa5" letter-spacing="0.14em">2026.04.25  /  LUCID ROB</text>
+
+  <text x="1136" y="585" text-anchor="end" font-family="'JetBrains Mono','Menlo',monospace" font-size="17" font-weight="700" fill="#ffb400" letter-spacing="0.22em" opacity="0.95">LUCIDROB.COM</text>
+  <rect x="980" y="600" width="156" height="2" fill="#ffb400" opacity="0.7"/>
+</svg>
