@@ -187,7 +187,7 @@ function esc(s) {
 }
 
 function buildSvg(post) {
-  const theme = THEMES[post.slug] || { accent: '#00f0ff', label: 'FIELD_NOTES' };
+  const theme = THEMES[post.slug] || { accent: '#00f0ff', label: 'BLOG' };
   const accent = theme.accent;
   const motif = MOTIFS[post.slug] ? MOTIFS[post.slug](accent) : '';
 
@@ -241,7 +241,7 @@ function buildSvg(post) {
   <rect x="0" y="0" width="1200" height="2" fill="url(#stripe)"/>
   <rect x="0" y="628" width="1200" height="2" fill="url(#stripe)"/>
 
-  <text x="64" y="80" font-family="'JetBrains Mono','Menlo',monospace" font-size="16" font-weight="600" fill="${accent}" letter-spacing="0.22em" opacity="0.95">// FIELD_NOTES</text>
+  <text x="64" y="80" font-family="'JetBrains Mono','Menlo',monospace" font-size="16" font-weight="600" fill="${accent}" letter-spacing="0.22em" opacity="0.95">// BLOG</text>
   <text x="64" y="108" font-family="'JetBrains Mono','Menlo',monospace" font-size="14" font-weight="500" fill="#c9c9d1" letter-spacing="0.18em" opacity="0.75">${esc(theme.label)}</text>
 
   <rect x="64" y="140" width="72" height="3" fill="${accent}" opacity="0.85"/>
