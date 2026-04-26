@@ -155,18 +155,12 @@ nlForm.addEventListener('submit', async (e) => {
   btn.textContent = 'Sending...';
   btn.disabled = true;
   try {
-    await fetch('https://formsubmit.co/ajax/lucidrobbiz@gmail.com', {
+    const res = await fetch('/api/subscribe', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        email,
-        tags: 'newsletter',
-        source: window.location.href,
-        signup_at: new Date().toISOString(),
-        _subject: '[newsletter] New Subscriber - LucidRob.com',
-        _captcha: 'false'
-      })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, source: window.location.href })
     });
+    if (!res.ok) throw new Error('subscribe_failed');
     nlForm.style.display = 'none';
     document.getElementById('newsletterConfirm').style.display = 'block';
   } catch {
