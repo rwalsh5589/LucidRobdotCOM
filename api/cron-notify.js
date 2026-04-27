@@ -67,16 +67,8 @@ async function fetchLatestYouTubeVideo() {
   };
 }
 
-// ---------- Latest blog post ----------
-async function fetchLatestBlogPost() {
-  const r = await fetch(`${SITE_URL}/rss.xml`, {
-    headers: { 'User-Agent': 'lucidrob-cron/1.0' },
-  });
-  if (!r.ok) return null;
-  const xml = await r.text();
-  const itemMatch = xml.match(/<item>[\s\S]*?<\/item>/);
-  if (!itemMatch) return null;
-  const item = itemMatch[0];
+// ---------- Blog post lookup ----------
+function parseRssItem(item) {
   const title = (item.match(/<title><!\[CDATA\[([\s\S]*?)\]\]><\/title>/) || [])[1];
   const link = (item.match(/<link>([^<]+)<\/link>/) || [])[1];
   const description = (item.match(/<description><!\[CDATA\[([\s\S]*?)\]\]><\/description>/) || [])[1] || '';
@@ -85,11 +77,31 @@ async function fetchLatestBlogPost() {
   const slug = link.replace(/^.*\/blog\//, '').replace(/\/$/, '');
   return {
     slug,
-    title: title || 'New post',
-    url: link,
+    title: (title || 'New post').trim(),
+    url: link.trim(),
     excerpt: description.trim(),
     image: enclosure || `${SITE_URL}/og-image.png`,
   };
+}
+
+async function fetchAllBlogItems() {
+  const r = await fetch(`${SITE_URL}/rss.xml`, {
+    headers: { 'User-Agent': 'lucidrob-cron/1.0' },
+  });
+  if (!r.ok) return [];
+  const xml = await r.text();
+  const items = [...xml.matchAll(/<item>[\s\S]*?<\/item>/g)].map((m) => m[0]);
+  return items.map(parseRssItem).filter(Boolean);
+}
+
+async function fetchLatestBlogPost() {
+  const all = await fetchAllBlogItems();
+  return all[0] || null;
+}
+
+async function fetchBlogPostBySlug(slug) {
+  const all = await fetchAllBlogItems();
+  return all.find((p) => p.slug === slug) || null;
 }
 
 // ---------- Email body templates ----------
@@ -179,14 +191,22 @@ module.exports = async function handler(req, res) {
   const url = new URL(req.url, 'http://x');
   const dry = url.searchParams.get('dry') === '1';
   const force = url.searchParams.get('force'); // 'video' | 'post' | null
+  const slug = url.searchParams.get('slug');   // optional, picks a specific post
 
   const result = { dry, actions: [], errors: [] };
 
   try {
     const [video, post] = await Promise.all([
       fetchLatestYouTubeVideo().catch((e) => ({ _error: 'youtube', message: e.message })),
-      fetchLatestBlogPost().catch((e) => ({ _error: 'blog', message: e.message })),
+      (slug
+        ? fetchBlogPostBySlug(slug)
+        : fetchLatestBlogPost()
+      ).catch((e) => ({ _error: 'blog', message: e.message })),
     ]);
+
+    if (slug && post && !post._error) {
+      result.actions.push({ type: 'post_slug_resolved', slug: post.slug, title: post.title });
+    }
 
     // -------- VIDEO --------
     if (video && !video._error) {
