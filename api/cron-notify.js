@@ -144,12 +144,17 @@ function escapeHtml(s) {
 }
 
 // ---------- Beehiiv broadcast ----------
-async function sendBeehiivBroadcast({ title, subjectLine, contentHtml }) {
+// Beehiiv's "publish + send" via API is gated to their Enterprise plan, so by
+// default we create a DRAFT here. The full email (subject, body, image, CTA) is
+// written into Beehiiv ready to fire ... user clicks Send in the dashboard.
+// Pass ?auto=1 to attempt status="confirmed" (will only succeed on Enterprise).
+async function sendBeehiivBroadcast({ title, subjectLine, contentHtml, autoSend = false }) {
   const apiKey = process.env.BEEHIIV_API_KEY;
   const pubId = process.env.BEEHIIV_PUBLICATION_ID;
   if (!apiKey || !pubId) {
     return { ok: false, status: 0, data: { error: 'missing_beehiiv_env' } };
   }
+  const status = autoSend ? 'confirmed' : 'draft';
   const r = await fetch(
     `https://api.beehiiv.com/v2/publications/${pubId}/posts`,
     {
@@ -160,9 +165,9 @@ async function sendBeehiivBroadcast({ title, subjectLine, contentHtml }) {
       },
       body: JSON.stringify({
         title,
-        subtitle: '',
+        subtitle: subjectLine,
         body_content: contentHtml,
-        status: 'confirmed',
+        status,
         audience: 'free',
         platform: 'email',
         email_settings: {
@@ -173,7 +178,7 @@ async function sendBeehiivBroadcast({ title, subjectLine, contentHtml }) {
     }
   );
   const data = await r.json().catch(() => null);
-  return { ok: r.ok, status: r.status, data };
+  return { ok: r.ok, status: r.status, data, mode: status };
 }
 
 // ---------- Handler ----------
@@ -192,6 +197,7 @@ module.exports = async function handler(req, res) {
   const dry = url.searchParams.get('dry') === '1';
   const force = url.searchParams.get('force'); // 'video' | 'post' | null
   const slug = url.searchParams.get('slug');   // optional, picks a specific post
+  const autoSend = url.searchParams.get('auto') === '1'; // attempt immediate send (Enterprise plan only)
 
   const result = { dry, actions: [], errors: [] };
 
@@ -227,10 +233,11 @@ module.exports = async function handler(req, res) {
             title: video.title,
             subjectLine: `new video: ${video.title}`,
             contentHtml: videoEmailHtml(video),
+            autoSend,
           });
           if (r.ok) {
             await kvSet('last_video_id', video.id);
-            result.actions.push({ type: 'video_sent', id: video.id, title: video.title });
+            result.actions.push({ type: r.mode === 'draft' ? 'video_drafted' : 'video_sent', id: video.id, title: video.title });
           } else {
             result.errors.push({ type: 'video_send_failed', status: r.status, data: r.data });
           }
@@ -260,10 +267,11 @@ module.exports = async function handler(req, res) {
             title: post.title,
             subjectLine: `new on the blog: ${post.title}`,
             contentHtml: postEmailHtml(post),
+            autoSend,
           });
           if (r.ok) {
             await kvSet('last_post_slug', post.slug);
-            result.actions.push({ type: 'post_sent', slug: post.slug, title: post.title });
+            result.actions.push({ type: r.mode === 'draft' ? 'post_drafted' : 'post_sent', slug: post.slug, title: post.title });
           } else {
             result.errors.push({ type: 'post_send_failed', status: r.status, data: r.data });
           }
