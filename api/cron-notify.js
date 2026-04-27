@@ -155,6 +155,17 @@ async function sendBeehiivBroadcast({ title, subjectLine, contentHtml, autoSend 
     return { ok: false, status: 0, data: { error: 'missing_beehiiv_env' } };
   }
   const status = autoSend ? 'confirmed' : 'draft';
+  const payload = autoSend
+    ? {
+        title,
+        subtitle: subjectLine,
+        body_content: contentHtml,
+        status,
+        audience: 'free',
+        platform: 'email',
+        email_settings: { subject_line: subjectLine, preview_text: '' },
+      }
+    : { title, subtitle: subjectLine, body_content: contentHtml, status };
   const r = await fetch(
     `https://api.beehiiv.com/v2/publications/${pubId}/posts`,
     {
@@ -163,18 +174,7 @@ async function sendBeehiivBroadcast({ title, subjectLine, contentHtml, autoSend 
         Authorization: `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        title,
-        subtitle: subjectLine,
-        body_content: contentHtml,
-        status,
-        audience: 'free',
-        platform: 'email',
-        email_settings: {
-          subject_line: subjectLine,
-          preview_text: '',
-        },
-      }),
+      body: JSON.stringify(payload),
     }
   );
   const data = await r.json().catch(() => null);
