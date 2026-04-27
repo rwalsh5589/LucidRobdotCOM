@@ -82,7 +82,7 @@
       <text x="68" y="444" font-family="'Lilita One','Impact','Arial Black','Helvetica Black',sans-serif" font-size="52" font-weight="400" fill="#0a0410" letter-spacing="0.005em">Explained</text>
       <text x="64" y="440" font-family="'Lilita One','Impact','Arial Black','Helvetica Black',sans-serif" font-size="52" font-weight="400" fill="#ffd24a" stroke="#0a0410" stroke-width="2" stroke-linejoin="round" letter-spacing="0.005em" paint-order="stroke fill">Explained</text>
 
-  <text x="64" y="540" font-family="'Permanent Marker','Marker Felt','Bradley Hand',cursive" font-size="17" fill="#d4c5a6" letter-spacing="0.08em">2026.02.05  /  LUCID ROB</text>
+  <text x="64" y="534" font-family="'Permanent Marker','Marker Felt','Bradley Hand',cursive" font-size="17" fill="#d4c5a6" letter-spacing="0.08em">2026.02.05  /  LUCID ROB</text>
 
   <text x="1140" y="588" text-anchor="end" font-family="'Lilita One','Impact','Arial Black',sans-serif" font-size="26" font-weight="400" fill="#ffd24a" stroke="#0a0410" stroke-width="1.6" stroke-linejoin="round" paint-order="stroke fill" letter-spacing="0.04em">LUCIDROB.COM</text>
   <rect x="940" y="600" width="200" height="2" fill="#ffd24a" opacity="0.7"/>

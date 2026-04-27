@@ -29,6 +29,7 @@ const PALETTE = {
 
 // Per-post theming (accent + label) ... colors aligned to new palette
 const THEMES = {
+  'missing-scientists-conspiracy':   { accent: PALETTE.magenta, label: 'MISSING_SCIENTISTS'      },
   'boston-molasses-flood-1919':      { accent: PALETTE.orange,  label: 'BOSTON_1919'             },
   'anunnaki-ancient-aliens':         { accent: PALETTE.gold,    label: 'ANUNNAKI_THEORY'         },
   'hollow-moon-theory':              { accent: PALETTE.teal,    label: 'HOLLOW_MOON_THEORY'      },
@@ -43,6 +44,33 @@ const THEMES = {
 };
 
 const MOTIFS = {
+  'missing-scientists-conspiracy': (c) => {
+    const figures = [];
+    const cols = 4, rows = 3;
+    const cellW = 92, cellH = 118;
+    const startX = -((cols - 1) * cellW) / 2;
+    const startY = -((rows - 1) * cellH) / 2;
+    const xed = new Set([0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11]); // 11 of 12 marked X
+    for (let r = 0; r < rows; r++) {
+      for (let col = 0; col < cols; col++) {
+        const idx = r * cols + col;
+        const x = startX + col * cellW;
+        const y = startY + r * cellH;
+        const isX = xed.has(idx);
+        const op = isX ? 0.32 : 0.95;
+        figures.push(`
+          <g transform="translate(${x} ${y})">
+            <circle cx="0" cy="-12" r="11" fill="${c}" opacity="${op}" stroke="${c}" stroke-width="2"/>
+            <path d="M -22 2 Q 0 -4 22 2 L 22 30 L -22 30 Z" fill="${c}" opacity="${op}" stroke="${c}" stroke-width="2"/>
+            ${isX ? `
+              <line x1="-30" y1="-30" x2="30" y2="34" stroke="${PALETTE.gold}" stroke-width="4" opacity="0.95" stroke-linecap="round"/>
+              <line x1="30" y1="-30" x2="-30" y2="34" stroke="${PALETTE.gold}" stroke-width="4" opacity="0.95" stroke-linecap="round"/>
+            ` : ''}
+          </g>`);
+      }
+    }
+    return `<g transform="translate(940 320)">${figures.join('')}</g>`;
+  },
   'boston-molasses-flood-1919': (c) => `
     <g transform="translate(940 320)">
       <ellipse cx="0" cy="-110" rx="78" ry="18" fill="none" stroke="${c}" stroke-width="3" opacity="0.55"/>
@@ -339,9 +367,9 @@ function buildPostSvg(post) {
   } else {
     fontSize = 42; maxChars = 25; lineHeight = 54;
   }
-  const lines = wrapTitle(sizingTitle, maxChars).slice(0, 4);
+  const lines = wrapTitle(sizingTitle, maxChars).slice(0, 5);
   const titleStartY = 248;
-  const bylineY = Math.min(titleStartY + lines.length * lineHeight + 36, 580);
+  const bylineY = Math.min(titleStartY + lines.length * lineHeight + 30, 588);
   const dateStr = new Date(post.date).toISOString().slice(0, 10).replace(/-/g, '.');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
