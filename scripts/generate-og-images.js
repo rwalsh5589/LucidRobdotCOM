@@ -29,6 +29,7 @@ const PALETTE = {
 
 // Per-post theming (accent + label) ... colors aligned to new palette
 const THEMES = {
+  'david-wilcock-suicide-conspiracy':{ accent: PALETTE.violet,  label: 'WILCOCK_DEATH'           },
   'missing-scientists-conspiracy':   { accent: PALETTE.magenta, label: 'MISSING_SCIENTISTS'      },
   'boston-molasses-flood-1919':      { accent: PALETTE.orange,  label: 'BOSTON_1919'             },
   'anunnaki-ancient-aliens':         { accent: PALETTE.gold,    label: 'ANUNNAKI_THEORY'         },
@@ -44,6 +45,20 @@ const THEMES = {
 };
 
 const MOTIFS = {
+  'david-wilcock-suicide-conspiracy': (c) => `
+    <g transform="translate(940 320)">
+      <rect x="-140" y="-130" width="280" height="190" rx="10" fill="${c}" opacity="0.08"/>
+      <rect x="-140" y="-130" width="280" height="190" rx="10" fill="none" stroke="${c}" stroke-width="3.5" opacity="0.9"/>
+      <circle cx="0" cy="-55" r="22" fill="${c}" opacity="0.5"/>
+      <path d="M -42 -22 Q 0 -36 42 -22 L 42 38 L -42 38 Z" fill="${c}" opacity="0.5"/>
+      <circle cx="-115" cy="-100" r="7" fill="${PALETTE.magenta}" opacity="0.95"/>
+      <text x="-100" y="-95" font-family="'Lilita One','Impact','Arial Black',sans-serif" font-size="14" fill="${c}" letter-spacing="0.08em">LIVE</text>
+      <line x1="-140" y1="-75" x2="140" y2="-75" stroke="${c}" stroke-width="1" opacity="0.35" stroke-dasharray="3 5"/>
+      <line x1="-140" y1="-32" x2="140" y2="-32" stroke="${c}" stroke-width="1" opacity="0.25" stroke-dasharray="2 4"/>
+      <line x1="-140" y1="10"  x2="140" y2="10"  stroke="${c}" stroke-width="1" opacity="0.2"  stroke-dasharray="3 5"/>
+      <line x1="-160" y1="-150" x2="160" y2="78" stroke="${PALETTE.gold}" stroke-width="5" opacity="0.95" stroke-linecap="round"/>
+      <text x="0" y="105" text-anchor="middle" font-family="'Lilita One','Impact','Arial Black',sans-serif" font-size="22" fill="${PALETTE.gold}" stroke="${PALETTE.ink}" stroke-width="1.6" stroke-linejoin="round" paint-order="stroke fill" letter-spacing="0.14em">SIGNAL LOST</text>
+    </g>`,
   'missing-scientists-conspiracy': (c) => {
     const figures = [];
     const cols = 4, rows = 3;
