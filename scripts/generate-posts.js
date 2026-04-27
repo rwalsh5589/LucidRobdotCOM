@@ -138,6 +138,7 @@ const buildPage = (post) => {
 <title>${esc(pageTitle)}</title>
 <link rel="icon" type="image/png" href="/logo-favicon.png"/>
 <link rel="apple-touch-icon" href="/logo-favicon.png"/>
+<link rel="alternate" type="application/rss+xml" title="Lucid Rob" href="/rss.xml"/>
 <meta name="description" content="${escAttr(post.excerpt)}" />
 <meta name="author" content="Lucid Rob" />
 <link rel="canonical" href="${escAttr(url)}" />
@@ -296,6 +297,36 @@ document.getElementById('socialsRow').innerHTML = Object.entries(CONFIG.SOCIALS)
 `;
 };
 
+const buildRssFeed = (posts) => {
+  const items = posts.map((p) => `
+    <item>
+      <title><![CDATA[${p.title}]]></title>
+      <link>${SITE_URL}/blog/${p.slug}</link>
+      <guid isPermaLink="true">${SITE_URL}/blog/${p.slug}</guid>
+      <pubDate>${new Date(p.date).toUTCString()}</pubDate>
+      <description><![CDATA[${p.excerpt}]]></description>
+      <enclosure url="${SITE_URL}/og/${p.slug}.png" type="image/png" length="0"/>
+      <category>${(p.tags || []).join(', ')}</category>
+    </item>`).join('');
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Lucid Rob</title>
+  <link>${SITE_URL}</link>
+  <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml"/>
+  <description>Conspiracies. Hidden history. Signal from the static.</description>
+  <language>en-us</language>
+  <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+  <image>
+    <url>${SITE_URL}/og-image.png</url>
+    <title>Lucid Rob</title>
+    <link>${SITE_URL}</link>
+  </image>${items}
+</channel>
+</rss>
+`;
+};
+
 const buildSitemap = (posts) => {
   const urls = [
     { loc: `${SITE_URL}/`, priority: '1.0' },
@@ -331,6 +362,9 @@ POSTS.forEach((post) => {
 
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), buildSitemap(POSTS), 'utf-8');
 console.log(`  wrote sitemap.xml`);
+
+fs.writeFileSync(path.join(ROOT, 'rss.xml'), buildRssFeed(POSTS), 'utf-8');
+console.log(`  wrote rss.xml`);
 
 const robots = `User-agent: *
 Allow: /
