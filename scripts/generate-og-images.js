@@ -41,7 +41,15 @@ const THEMES = {
   'epstein-files-conspiracy':        { accent: PALETTE.magenta, label: 'EPSTEIN_FILES'           },
   'ai-deepfakes-spotting-guide':     { accent: PALETTE.violet,  label: 'AI_DEEPFAKES'            },
   'elvis-bob-joyce-theory':          { accent: PALETTE.gold,    label: 'ELVIS_LIVES'             },
-  'nasa-project-anchor-debunked':    { accent: PALETTE.teal,    label: 'PROJECT_ANCHOR_DEBUNKED' }
+  'nasa-project-anchor-debunked':    { accent: PALETTE.teal,    label: 'PROJECT_ANCHOR_DEBUNKED' },
+  'tartaria-mud-flood':              { accent: PALETTE.orange,  label: 'TARTARIA_MUD_FLOOD'      },
+  'project-blue-beam':               { accent: PALETTE.teal,    label: 'PROJECT_BLUE_BEAM'       },
+  'cern-timeline-shift':             { accent: PALETTE.violet,  label: 'CERN_TIMELINE_SHIFT'     },
+  'antarctica-hidden-continent':     { accent: PALETTE.teal,    label: 'ANTARCTICA_UNDER_ICE'    },
+  'black-knight-satellite':          { accent: PALETTE.violet,  label: 'BLACK_KNIGHT_SAT'        },
+  'phantom-time-hypothesis':         { accent: PALETTE.gold,    label: 'PHANTOM_TIME'            },
+  'bohemian-grove-cremation-of-care':{ accent: PALETTE.magenta, label: 'BOHEMIAN_GROVE'          },
+  'haarp-weather-manipulation':      { accent: PALETTE.orange,  label: 'HAARP_ARRAY'             }
 };
 
 const MOTIFS = {
