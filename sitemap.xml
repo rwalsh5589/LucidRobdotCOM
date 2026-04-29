@@ -9,6 +9,10 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://lucidrob.com/deepstate</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://lucidrob.com/blog/tartaria-mud-flood</loc>
     <lastmod>2026-04-29</lastmod>
     <priority>0.8</priority>
