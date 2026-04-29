@@ -17,6 +17,12 @@
 
 <!-- iOS doesn't read manifest icons; provide an inline apple-touch-icon -->
 <link rel="apple-touch-icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180"><rect width="180" height="180" rx="32" fill="%2306040d"/><text x="90" y="100" font-family="Courier New" font-weight="900" font-size="32" fill="%23ff003c" text-anchor="middle">DEEP</text><text x="90" y="138" font-family="Courier New" font-weight="900" font-size="32" fill="%23ff003c" text-anchor="middle">STATE</text></svg>'>
+
+<!-- Site nav: shared header from lucidrob.com -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Lilita+One&family=Alfa+Slab+One&family=Space+Grotesk:wght@300;400;500;600;700&family=Kaushan+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
 <style>
   :root {
     --bg-deep: #06040d;
@@ -261,10 +267,28 @@
   body.is-touch.is-portrait .frame { visibility: hidden; }
   /* On touch devices, fill the viewport completely */
   body.is-touch .frame {
-    width: 100vw; height: 100vh;
-    max-height: 100vh; aspect-ratio: auto;
+    width: 100%; height: 100%;
+    max-height: 100%; aspect-ratio: auto;
     border: none; box-shadow: none;
   }
+
+  /* ── Site-nav layout: stack nav above the game stage ── */
+  body {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+  .game-stage {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .frame { max-height: 100%; }
+  /* Make sure inherited site-nav styles don't interfere with game text */
+  .frame, .frame * { font-family: 'Courier New', monospace; }
 </style>
 </head>
 <body>
@@ -273,6 +297,26 @@
   <h2>ROTATE YOUR DEVICE</h2>
   <p>DEEP STATE plays in landscape — turn your phone sideways to begin.</p>
 </div>
+
+<!-- SITE NAV -->
+<nav>
+  <a class="brand brand-logo" href="/" aria-label="Lucid Rob home">
+    <img src="/logo-nav.png" alt="Lucid Rob" />
+  </a>
+  <button class="nav-toggle" aria-label="menu">MENU</button>
+  <ul id="navMenu">
+    <li><a href="/#videos">01_VIDEOS</a></li>
+    <li><a href="/#merch">02_MERCH</a></li>
+    <li><a href="/#books">03_BOOKS</a></li>
+    <li><a href="/#music">04_MUSIC</a></li>
+    <li><a href="/blog">05_BLOG</a></li>
+    <li><a href="/#join">06_JOIN</a></li>
+    <li><a href="/#about">07_ABOUT</a></li>
+    <li><a href="/deepstate">08_DEEP_STATE</a></li>
+  </ul>
+</nav>
+
+<div class="game-stage">
 <div class="frame">
   <canvas id="game" width="960" height="540"></canvas>
   <div class="crt-overlay"></div>
@@ -331,6 +375,12 @@
     <button class="start-btn" id="restartBtn">▶ TRY AGAIN</button>
   </div>
 </div>
+</div>
+<script>
+// Mobile nav toggle (mirrors index.html behavior)
+document.querySelector('.nav-toggle').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('open'));
+document.querySelectorAll('#navMenu a').forEach(a => a.addEventListener('click', () => document.getElementById('navMenu').classList.remove('open')));
+</script>
 <script>
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
