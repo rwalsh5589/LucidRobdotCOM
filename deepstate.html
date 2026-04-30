@@ -290,6 +290,40 @@
   .frame { max-height: 100%; }
   /* Make sure inherited site-nav styles don't interfere with game text */
   .frame, .frame * { font-family: 'Courier New', monospace; }
+
+  /* ── Mobile: float nav over corners so the game gets the full viewport ── */
+  @media (max-width: 820px) {
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: transparent;
+      border-bottom: none;
+      box-shadow: none;
+      padding: 8px 12px;
+      z-index: 200;
+      pointer-events: none; /* let taps pass through empty middle to game */
+    }
+    nav .brand-logo,
+    nav .nav-toggle,
+    nav ul { pointer-events: auto; }
+    nav .brand-logo {
+      height: 36px;
+      filter: drop-shadow(0 0 6px rgba(0,0,0,0.7)) drop-shadow(0 0 14px rgba(255, 210, 74, 0.5));
+    }
+    nav ul {
+      top: 100%;
+      left: auto;
+      right: 8px;
+      width: min(240px, 80vw);
+      max-height: calc(100vh - 60px);
+      overflow-y: auto;
+      border-left: 3px solid var(--gold);
+    }
+    /* Game stage claims the full viewport since nav is out of flow */
+    .game-stage { height: 100vh; }
+    /* Comfortable tap target for the START / TRY AGAIN buttons */
+    .start-btn { padding: 18px 36px; min-height: 48px; }
+  }
 </style>
 </head>
 <body>
