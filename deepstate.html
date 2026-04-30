@@ -154,6 +154,22 @@
   .dpad-right { top: 46px; left: 92px; }
   .dpad-up { top: 0; left: 46px; }
   .dpad-down { top: 92px; left: 46px; }
+  /* Diagonal buttons fill the corners of the d-pad — each one fires
+     two arrow keys at once so the player can move-and-jump (or
+     move-and-duck) with a single thumb. Slightly smaller than the
+     cardinals so they read as secondary. */
+  .dpad-btn.dpad-up-left,
+  .dpad-btn.dpad-up-right,
+  .dpad-btn.dpad-down-left,
+  .dpad-btn.dpad-down-right {
+    width: 44px; height: 44px;
+    font-size: 18px;
+    opacity: 0.9;
+  }
+  .dpad-up-left    { top: 0;    left: 0; }
+  .dpad-up-right   { top: 0;    left: 96px; }
+  .dpad-down-left  { top: 96px; left: 0; }
+  .dpad-down-right { top: 96px; left: 96px; }
   .screen {
     position: absolute; inset: 0; z-index: 50;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -423,10 +439,14 @@
   <button class="audio-toggle" id="audioToggle">♪ SOUND: ON</button>
   <div class="touch-controls" id="touchControls">
     <div class="dpad">
-      <div class="dpad-btn dpad-up"    data-key="ArrowUp">▲</div>
-      <div class="dpad-btn dpad-left"  data-key="ArrowLeft">◄</div>
-      <div class="dpad-btn dpad-right" data-key="ArrowRight">►</div>
-      <div class="dpad-btn dpad-down"  data-key="ArrowDown">▼</div>
+      <div class="dpad-btn dpad-up-left"    data-key="ArrowUp,ArrowLeft">↖</div>
+      <div class="dpad-btn dpad-up"         data-key="ArrowUp">▲</div>
+      <div class="dpad-btn dpad-up-right"   data-key="ArrowUp,ArrowRight">↗</div>
+      <div class="dpad-btn dpad-left"       data-key="ArrowLeft">◄</div>
+      <div class="dpad-btn dpad-right"      data-key="ArrowRight">►</div>
+      <div class="dpad-btn dpad-down-left"  data-key="ArrowDown,ArrowLeft">↙</div>
+      <div class="dpad-btn dpad-down"       data-key="ArrowDown">▼</div>
+      <div class="dpad-btn dpad-down-right" data-key="ArrowDown,ArrowRight">↘</div>
     </div>
     <div class="action-buttons">
       <button class="btn yellow" data-key="KeyL">SHOOT</button>
@@ -1252,9 +1272,11 @@ window.addEventListener('keydown', e => {
 });
 window.addEventListener('keyup', e => { keys[e.code] = false; });
 function setupTouchButton(el) {
-  const key = el.dataset.key;
-  const press = e => { e.preventDefault(); keys[key] = true; el.classList.add('pressed'); };
-  const release = e => { e.preventDefault(); keys[key] = false; el.classList.remove('pressed'); };
+  // data-key may be a single key ("ArrowUp") or a comma-separated list
+  // ("ArrowUp,ArrowRight") so diagonal buttons can fire two arrows at once.
+  const keyList = el.dataset.key.split(',').map(s => s.trim()).filter(Boolean);
+  const press = e => { e.preventDefault(); keyList.forEach(k => { keys[k] = true; }); el.classList.add('pressed'); };
+  const release = e => { e.preventDefault(); keyList.forEach(k => { keys[k] = false; }); el.classList.remove('pressed'); };
   el.addEventListener('touchstart', press, {passive:false});
   el.addEventListener('touchend', release, {passive:false});
   el.addEventListener('touchcancel', release, {passive:false});
