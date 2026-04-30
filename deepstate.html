@@ -298,9 +298,11 @@
     width: min(100vw - 32px, 960px);
     max-height: none;
     aspect-ratio: 16/9;
-    /* Block gestures inside the game so swipes don't scroll the page
-       while the user is playing. */
-    touch-action: none;
+    /* Allow vertical scroll when swiping on the frame so users can
+       reach the START button if it's below the fold. The dpad and
+       action buttons preventDefault on their own touch events, so
+       they keep working without triggering a scroll during play. */
+    touch-action: pan-y;
   }
   /* Restore the visible frame border on touch devices since the frame
      no longer claims the full viewport. */
