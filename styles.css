@@ -719,6 +719,53 @@ section::before, section.amber-divider::before, section.violet-divider::before, 
   overflow: hidden;
   box-shadow: var(--shadow-lg), var(--shadow-lg) 0 0 1px var(--gold);
 }
+
+/* Merch shop card — image hero + CTA, links to lucidrobmerch.com */
+.merch-shop-card {
+  display: block;
+  position: relative;
+  border: 3px solid var(--ink);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--bg-2);
+  box-shadow: var(--shadow-lg), var(--shadow-lg) 0 0 1px var(--gold);
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.merch-shop-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 11px 11px 0 var(--ink), 11px 11px 0 1px var(--magenta);
+}
+.merch-shop-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-bottom: 3px solid var(--ink);
+}
+.merch-shop-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 28px 24px 32px;
+  background: var(--bg-2);
+}
+.merch-shop-eyebrow {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-shadow: 0 0 8px rgba(255, 210, 74, 0.5);
+}
+.merch-shop-card .merch-shop-btn { pointer-events: none; }
+.merch-shop-card:hover .merch-shop-btn {
+  background: #ff5cc6;
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 var(--ink), 9px 9px 0 1px var(--paper);
+}
+.merch-shop-card:hover .merch-shop-btn .arrow { transform: translateX(4px); }
 .caution-wrap { position: absolute; inset: 0; pointer-events: none; }
 .caution-tape {
   position: absolute; left: -20%; right: -20%;
