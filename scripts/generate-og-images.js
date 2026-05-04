@@ -49,7 +49,8 @@ const THEMES = {
   'black-knight-satellite':          { accent: PALETTE.violet,  label: 'BLACK_KNIGHT_SAT'        },
   'phantom-time-hypothesis':         { accent: PALETTE.gold,    label: 'PHANTOM_TIME'            },
   'bohemian-grove-cremation-of-care':{ accent: PALETTE.magenta, label: 'BOHEMIAN_GROVE'          },
-  'haarp-weather-manipulation':      { accent: PALETTE.orange,  label: 'HAARP_ARRAY'             }
+  'haarp-weather-manipulation':      { accent: PALETTE.orange,  label: 'HAARP_ARRAY'             },
+  'dark-ages-conspiracy':            { accent: PALETTE.violet,  label: 'DARK_AGES_LIE'           }
 };
 
 const MOTIFS = {
@@ -259,6 +260,27 @@ const MOTIFS = {
       <ellipse cx="0" cy="0" rx="56" ry="170" fill="none" stroke="${c}" stroke-width="1.5" opacity="0.3"/>
       <path d="M 0 -114 L 0 96 M -48 76 Q 0 130 48 76 M -28 -114 L 28 -114 M 0 -132 A 18 18 0 1 1 0.01 -132" fill="none" stroke="${c}" stroke-width="8" stroke-linecap="round" opacity="0.9"/>
       <line x1="-140" y1="-140" x2="140" y2="140" stroke="${PALETTE.magenta}" stroke-width="8" stroke-linecap="round"/>
+    </g>`,
+  'dark-ages-conspiracy': (c) => `
+    <g transform="translate(940 320)">
+      <!-- Closed book / banned tome motif -->
+      <rect x="-150" y="-110" width="300" height="220" rx="6" fill="${c}" opacity="0.1"/>
+      <rect x="-150" y="-110" width="300" height="220" rx="6" fill="none" stroke="${c}" stroke-width="3.5" opacity="0.85"/>
+      <line x1="0" y1="-110" x2="0" y2="110" stroke="${c}" stroke-width="3" opacity="0.8"/>
+      <!-- Spine clasps -->
+      <rect x="-12" y="-110" width="24" height="14" fill="${c}" opacity="0.85"/>
+      <rect x="-12" y="96" width="24" height="14" fill="${c}" opacity="0.85"/>
+      <!-- Cross / suppression mark over the open page -->
+      <line x1="-110" y1="-60" x2="-110" y2="60" stroke="${c}" stroke-width="1.5" opacity="0.45"/>
+      <line x1="-90" y1="-60" x2="-90" y2="60" stroke="${c}" stroke-width="1.5" opacity="0.35"/>
+      <line x1="-70" y1="-60" x2="-70" y2="60" stroke="${c}" stroke-width="1.5" opacity="0.45"/>
+      <line x1="-50" y1="-60" x2="-50" y2="60" stroke="${c}" stroke-width="1.5" opacity="0.35"/>
+      <line x1="-30" y1="-60" x2="-30" y2="60" stroke="${c}" stroke-width="1.5" opacity="0.45"/>
+      <!-- Flame on the right page (knowledge being burned) -->
+      <path d="M 70 60 Q 50 20 70 -20 Q 90 0 100 -40 Q 120 0 110 40 Q 95 60 70 60 Z" fill="${PALETTE.magenta}" opacity="0.85"/>
+      <path d="M 80 50 Q 70 25 82 -5 Q 96 15 95 35 Q 90 55 80 50 Z" fill="${PALETTE.gold}" opacity="0.9"/>
+      <!-- Forbidden stamp -->
+      <line x1="-150" y1="-110" x2="150" y2="110" stroke="${PALETTE.magenta}" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
     </g>`
 };
 
