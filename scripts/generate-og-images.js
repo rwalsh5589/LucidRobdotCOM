@@ -50,7 +50,8 @@ const THEMES = {
   'phantom-time-hypothesis':         { accent: PALETTE.gold,    label: 'PHANTOM_TIME'            },
   'bohemian-grove-cremation-of-care':{ accent: PALETTE.magenta, label: 'BOHEMIAN_GROVE'          },
   'haarp-weather-manipulation':      { accent: PALETTE.orange,  label: 'HAARP_ARRAY'             },
-  'dark-ages-conspiracy':            { accent: PALETTE.violet,  label: 'DARK_AGES_LIE'           }
+  'dark-ages-conspiracy':            { accent: PALETTE.violet,  label: 'DARK_AGES_LIE'           },
+  'pastors-alien-disclosure-warning':{ accent: PALETTE.magenta, label: 'PASTOR_DISCLOSURE_OP'    }
 };
 
 const MOTIFS = {
@@ -281,6 +282,27 @@ const MOTIFS = {
       <path d="M 80 50 Q 70 25 82 -5 Q 96 15 95 35 Q 90 55 80 50 Z" fill="${PALETTE.gold}" opacity="0.9"/>
       <!-- Forbidden stamp -->
       <line x1="-150" y1="-110" x2="150" y2="110" stroke="${PALETTE.magenta}" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+    </g>`,
+  'pastors-alien-disclosure-warning': (c) => `
+    <g transform="translate(940 320)">
+      <!-- Broadcast waves emanating downward from the disc -->
+      <path d="M -210 -80 A 230 230 0 0 1 210 -80" fill="none" stroke="${c}" stroke-width="2.5" opacity="0.3"/>
+      <path d="M -160 -100 A 180 180 0 0 1 160 -100" fill="none" stroke="${c}" stroke-width="2.5" opacity="0.5"/>
+      <path d="M -110 -120 A 130 130 0 0 1 110 -120" fill="none" stroke="${c}" stroke-width="2.5" opacity="0.75"/>
+      <!-- UFO disc -->
+      <ellipse cx="0" cy="-148" rx="74" ry="18" fill="${c}" opacity="0.9"/>
+      <ellipse cx="0" cy="-160" rx="40" ry="14" fill="${c}" opacity="0.95"/>
+      <circle cx="-32" cy="-148" r="4" fill="${PALETTE.gold}"/>
+      <circle cx="0"   cy="-148" r="4" fill="${PALETTE.gold}"/>
+      <circle cx="32"  cy="-148" r="4" fill="${PALETTE.gold}"/>
+      <!-- Light beam from disc to cross -->
+      <path d="M -22 -130 L -70 140 L 70 140 L 22 -130 Z" fill="${c}" opacity="0.12"/>
+      <!-- Cross on a small pulpit base -->
+      <rect x="-14" y="-80" width="28" height="200" fill="${c}" opacity="0.9"/>
+      <rect x="-58" y="-30" width="116" height="22" fill="${c}" opacity="0.9"/>
+      <rect x="-72" y="120" width="144" height="20" fill="${c}" opacity="0.85"/>
+      <!-- Subtle eye glow at top of cross to suggest something watching back -->
+      <circle cx="0" cy="-90" r="6" fill="${PALETTE.gold}" opacity="0.85"/>
     </g>`
 };
 
