@@ -725,9 +725,9 @@ section::before, section.amber-divider::before, section.violet-divider::before, 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
-  margin-bottom: 40px;
+  margin-top: 40px;
 }
-.merch-grid:empty { display: none; margin-bottom: 0; }
+.merch-grid:empty { display: none; margin-top: 0; }
 @media (max-width: 900px) { .merch-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
 @media (max-width: 480px) { .merch-grid { grid-template-columns: 1fr; } }
 
