@@ -26,6 +26,19 @@ const slugify = (s) => s.toLowerCase()
 const renderBody = (body) => body.split('\n\n').map((chunk) => {
   const trimmed = chunk.trim();
   if (!trimmed) return '';
+
+  // Image-only paragraph: ![alt](url) or ![alt|caption](url). Caption text is
+  // escaped plain text — keep it simple and copy-source attribution friendly.
+  const imgMatch = trimmed.match(/^!\[([^\]]*)\]\(([^)\s]+)\)$/);
+  if (imgMatch) {
+    const [, altRaw, url] = imgMatch;
+    const [altPart, captionPart] = altRaw.split('|');
+    const alt = (altPart || '').trim();
+    const caption = (captionPart || '').trim();
+    const cap = caption ? `<figcaption>${esc(caption)}</figcaption>` : '';
+    return `<figure class="post-image"><img src="${escAttr(url)}" alt="${escAttr(alt)}" loading="lazy"/>${cap}</figure>`;
+  }
+
   const isSubhead = trimmed.length < 90
     && !trimmed.endsWith('.')
     && !trimmed.endsWith('!')

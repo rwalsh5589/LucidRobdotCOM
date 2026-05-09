@@ -51,7 +51,8 @@ const THEMES = {
   'bohemian-grove-cremation-of-care':{ accent: PALETTE.magenta, label: 'BOHEMIAN_GROVE'          },
   'haarp-weather-manipulation':      { accent: PALETTE.orange,  label: 'HAARP_ARRAY'             },
   'dark-ages-conspiracy':            { accent: PALETTE.violet,  label: 'DARK_AGES_LIE'           },
-  'pastors-alien-disclosure-warning':{ accent: PALETTE.magenta, label: 'PASTOR_DISCLOSURE_OP'    }
+  'pastors-alien-disclosure-warning':{ accent: PALETTE.magenta, label: 'PASTOR_DISCLOSURE_OP'    },
+  'bigfoot-missing-link':            { accent: PALETTE.orange,  label: 'BIGFOOT_LEGEND'          }
 };
 
 const MOTIFS = {
@@ -303,6 +304,25 @@ const MOTIFS = {
       <rect x="-72" y="120" width="144" height="20" fill="${c}" opacity="0.85"/>
       <!-- Subtle eye glow at top of cross to suggest something watching back -->
       <circle cx="0" cy="-90" r="6" fill="${PALETTE.gold}" opacity="0.85"/>
+    </g>`,
+  'bigfoot-missing-link': (c) => `
+    <g transform="translate(940 320)">
+      <!-- Big footprint: heel pad -->
+      <ellipse cx="0" cy="60" rx="62" ry="86" fill="${c}" opacity="0.18"/>
+      <ellipse cx="0" cy="60" rx="62" ry="86" fill="none" stroke="${c}" stroke-width="3.5" opacity="0.95"/>
+      <!-- Ball / arch transition -->
+      <path d="M -56 -10 Q 0 -28 56 -10" fill="none" stroke="${c}" stroke-width="2.5" opacity="0.55"/>
+      <!-- Five toes, big to small -->
+      <ellipse cx="-36" cy="-58" rx="16" ry="20" fill="${c}" opacity="0.92"/>
+      <ellipse cx="-12" cy="-78" rx="14" ry="18" fill="${c}" opacity="0.92"/>
+      <ellipse cx="10"  cy="-86" rx="13" ry="17" fill="${c}" opacity="0.92"/>
+      <ellipse cx="30"  cy="-80" rx="11" ry="15" fill="${c}" opacity="0.92"/>
+      <ellipse cx="46"  cy="-66" rx="9"  ry="12" fill="${c}" opacity="0.92"/>
+      <!-- Tree-line silhouette behind, low and dark -->
+      <path d="M -200 150 L -180 110 L -160 145 L -140 100 L -120 145 L -100 115 L -80 145 L -60 95 L -40 145 L -20 120 L 0 145 L 20 105 L 40 145 L 60 115 L 80 145 L 100 100 L 120 145 L 140 110 L 160 145 L 180 120 L 200 145 L 200 200 L -200 200 Z" fill="${c}" opacity="0.22"/>
+      <!-- Two glinting eyes peeking from the trees -->
+      <circle cx="-110" cy="118" r="3.5" fill="${PALETTE.gold}" opacity="0.95"/>
+      <circle cx="-96"  cy="118" r="3.5" fill="${PALETTE.gold}" opacity="0.95"/>
     </g>`
 };
 

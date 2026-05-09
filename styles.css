@@ -1061,6 +1061,34 @@ article.post .post-title-link { color: inherit; text-decoration: none; }
 }
 .video-embed figcaption a { color: var(--gold); text-decoration: underline; text-decoration-color: var(--magenta); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .video-embed figcaption a:hover { color: var(--magenta); }
+
+/* Embedded inline image */
+.post-image {
+  margin: 36px 0;
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: var(--shadow-md), var(--shadow-md) 0 0 1px var(--gold);
+  background: var(--bg-2);
+  overflow: hidden;
+}
+.post-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--ink);
+}
+.post-image figcaption {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  padding: 10px 14px;
+  background: var(--ink);
+  color: var(--paper);
+  border-top: 2px solid var(--ink);
+}
+.post-image figcaption a { color: var(--gold); text-decoration: underline; text-decoration-color: var(--magenta); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.post-image figcaption a:hover { color: var(--magenta); }
 .tag-chip {
   display: inline-flex; align-items: center; gap: 6px;
   padding: 6px 14px;
