@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /iceberg-poster.html
+Disallow: /lucid_rob_iceberg.png
 
 Sitemap: https://lucidrob.com/sitemap.xml

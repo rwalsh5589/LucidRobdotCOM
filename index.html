@@ -50,12 +50,6 @@
     { title: "Mission Failed Successfully",       subtitle: "An Unconventional Guide to Embracing Failure",   cover: "https://m.media-amazon.com/images/I/71g2yBksmGL._SL1500_.jpg",  amazon: "https://www.amazon.com/Mission-Failed-Successfully-Unconventional-Embracing/dp/B0C47YQYJF" }
   ];
 
-  const MERCH = [
-    { name: "Signal Tee",    price: "$28", image: "https://placehold.co/500x500/0a0a0f/00f0ff?text=TEE",    url: "https://lucidrob.myshopify.com/products/tee" },
-    { name: "Static Hoodie", price: "$55", image: "https://placehold.co/500x500/0a0a0f/ff006e?text=HOODIE", url: "https://lucidrob.myshopify.com/products/hoodie" },
-    { name: "Signal Cap",    price: "$32", image: "https://placehold.co/500x500/0a0a0f/ffb400?text=HAT",    url: "https://lucidrob.myshopify.com/products/hat" }
-  ];
-
 </script>
 <script src="posts.js"></script>
 
@@ -79,14 +73,12 @@
   </a>
   <button class="nav-toggle" aria-label="menu">MENU</button>
   <ul id="navMenu">
-    <li><a href="#videos">01_VIDEOS</a></li>
-    <li><a href="https://lucidrobmerch.com/" target="_blank" rel="noopener">02_MERCH</a></li>
-    <li><a href="#books">03_BOOKS</a></li>
-    <li><a href="#music">04_MUSIC</a></li>
-    <li><a href="#blog">05_BLOG</a></li>
-    <li><a href="#join">06_JOIN</a></li>
-    <li><a href="#about">07_ABOUT</a></li>
-    <li><a href="/deepstate">08_DEEP_STATE</a></li>
+    <li><a href="#videos">Watch</a></li>
+    <li><a href="#merch">Shop</a></li>
+    <li><a href="#read">Read</a></li>
+    <li><a href="#music">Listen</a></li>
+    <li><a href="#join">Join</a></li>
+    <li><a class="nav-cta" href="#join">Subscribe <span class="arrow">→</span></a></li>
   </ul>
 </nav>
 
@@ -104,25 +96,29 @@
   </div>
 
   <div class="hero-inner">
-    <div class="status-bar mono">
-      <span class="online">SIGNAL/STABLE</span>
-      <span id="sessionId">SESSION_0x00</span>
-      <span id="todayStr">--</span>
-    </div>
-
     <div class="hero-logo-wrap">
       <div class="hero-logo-halo"></div>
       <img class="hero-logo" src="/logo-hero.png" alt="LUCID ROB" />
     </div>
 
     <p class="subtitle">
-      This is the Lucid Rob hub. Videos, books, music, writing, merch, and a newsletter for the stories too <span class="hl-pink">weird</span> for YouTube.
-      Look around. Pick your <span class="hl-cyan">signal</span>. Welcome to the crew.
+      History without the boring parts. I find the stories history tried to bury and tell them <span class="hl-cyan">straight</span>.
     </p>
 
+    <div class="hero-stats" id="heroStats" aria-live="polite">
+      <span class="live-dot" aria-hidden="true"></span>
+      <span><span class="count" id="ytSubCount">--</span> subscribers on YouTube</span>
+    </div>
+
+    <form class="hero-newsletter" id="heroNewsletterForm" aria-label="Subscribe to the Lucid Rob newsletter">
+      <input type="email" name="email" id="heroNewsletterEmail" placeholder="your@email.com" required autocomplete="email" />
+      <button type="submit" id="heroNewsletterBtn">Subscribe <span class="arrow">→</span></button>
+    </form>
+    <p class="hero-newsletter-confirm" id="heroNewsletterConfirm" style="display:none;">// SIGNAL RECEIVED. YOU'RE IN.</p>
+    <p class="hero-newsletter-fineprint">Free Conspiracy Iceberg poster on signup. No spam, ever.</p>
+
     <div class="cta-row">
-      <a class="btn primary" href="#videos">Latest Video <span class="arrow">→</span></a>
-      <a class="btn pink" href="#join">Get the Signal <span class="arrow">→</span></a>
+      <a class="btn primary" href="#videos">Watch Latest <span class="arrow">→</span></a>
     </div>
   </div>
 
@@ -149,7 +145,7 @@
   <div class="section-wrap">
     <div class="section-header">
       <span class="num">// 01</span>
-      <h2 class="neon-sign sign-videos">Videos</h2>
+      <h2 class="neon-sign sign-videos">Watch</h2>
       <p class="section-desc">Latest three uploads, straight from the feed.</p>
     </div>
     <div class="video-grid" id="videoGrid">
@@ -163,7 +159,7 @@
   <div class="section-wrap">
     <div class="section-header">
       <span class="num">// 02</span>
-      <h2 class="neon-sign sign-merch">Merch</h2>
+      <h2 class="neon-sign sign-merch">Shop</h2>
       <p class="section-desc">Gear that won't make you look like everyone else.</p>
     </div>
 
@@ -179,50 +175,11 @@
   </div>
 </section>
 
-<!-- BOOKS -->
-<section id="books">
-  <div class="section-wrap">
-    <div class="section-header">
-      <span class="num">// 03</span>
-      <h2 class="neon-sign sign-books">Books</h2>
-      <p class="section-desc">The long-form stuff. Available on Amazon.</p>
-    </div>
-    <div class="books-grid" id="booksGrid"></div>
-  </div>
-</section>
-
-<!-- MUSIC -->
-<section id="music" class="amber-divider">
-  <div class="section-wrap">
-    <div class="section-header">
-      <span class="num">// 04</span>
-      <h2 class="neon-sign sign-listen">Listen<span class="bulb-right"></span></h2>
-      <p class="section-desc">Stream Lucid Rob's music on your favorite streaming app.</p>
-    </div>
-    <div class="music-grid" id="musicGrid"></div>
-  </div>
-</section>
-
-<!-- BLOG -->
-<section id="blog">
-  <div class="section-wrap">
-    <div class="section-header">
-      <span class="num">// 05</span>
-      <h2 class="neon-sign sign-notes">Blog</h2>
-      <p class="section-desc">Writing that doesn't fit anywhere else.</p>
-    </div>
-    <div class="posts" id="postsList"></div>
-    <div class="blog-view-all">
-      <a class="btn primary" href="blog.html">View All Posts <span class="arrow">→</span></a>
-    </div>
-  </div>
-</section>
-
 <!-- JOIN -->
 <section id="join">
   <div class="section-wrap">
     <div class="section-header">
-      <span class="num">// 06</span>
+      <span class="num">// 03</span>
       <h2 class="neon-sign sign-join">Join</h2>
       <p class="section-desc">Two ways in. Pick your signal.</p>
     </div>
@@ -235,7 +192,7 @@
           <input type="email" name="email" id="newsletterEmail" placeholder="your@email.com" required />
           <button type="submit" class="btn primary" id="newsletterBtn">Subscribe <span class="arrow">→</span></button>
         </form>
-        <p class="newsletter-confirm" id="newsletterConfirm" style="display:none;color:var(--neon-cyan);font-family:'JetBrains Mono',monospace;font-size:13px;margin-top:12px;text-shadow:0 0 8px rgba(0,240,255,0.5);">// SIGNAL RECEIVED. YOU'RE IN.</p>
+        <p class="newsletter-confirm" id="newsletterConfirm" style="display:none;color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:13px;margin-top:12px;text-shadow:0 0 8px rgba(255,210,74,0.5);">// SIGNAL RECEIVED. YOU'RE IN.</p>
       </div>
       <div class="join-col discord">
         <span class="tag">// DISCORD</span>
@@ -250,55 +207,135 @@
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
+<!-- READ (Blog + Books in tabs) -->
+<section id="read">
   <div class="section-wrap">
     <div class="section-header">
-      <span class="num">// 07</span>
-      <h2 class="neon-sign sign-about">About</h2>
-      <p class="section-desc">A short version of who I am.</p>
+      <span class="num">// 04</span>
+      <h2 class="neon-sign sign-notes">Read</h2>
+      <p class="section-desc">Long-form writing and books. Pick your format.</p>
     </div>
-    <div class="about-body">
-      <p>I'm Rob. You've probably found me through YouTube, but this site is where everything else lives. The books, the music, the writing, the newsletter, the occasional weird side project.</p>
-      <p>Quick background. I started out as a welder, talked my way into internet marketing, and somewhere along the line became a YouTuber, author, and music producer. When I'm not making stuff, I'm on a motorcycle or getting punched in the face at muay thai. Keeps things balanced.</p>
-      <p>YouTube started as a hobby. Something to mess around with on the side. Then the community showed up, and it stopped being a hobby. The friends I've made, the fans who actually give a damn, the people in the comments and the Discord who are just as into this stuff as I am, that's what turned it into a real thing. I'm still kind of blown away by it.</p>
-      <p>What I do is pretty simple. I find the stories history tried to bury or pretty up, and I tell them straight. No lecture voice. No moralizing. No acting like the past was populated by anything other than real people doing real, often extremely stupid, things.</p>
-      <p class="about-kicker">If you want history that talks to you like an adult, you found your guy.</p>
+
+    <div class="read-tabs-wrap">
+      <div class="read-tabs" role="tablist" aria-label="Read content type">
+        <button class="read-tab active" role="tab" aria-selected="true"  data-target="readBlog">Blog</button>
+        <button class="read-tab"        role="tab" aria-selected="false" data-target="readBooks">Books</button>
+      </div>
     </div>
+
+    <div class="read-panel active" id="readBlog" role="tabpanel">
+      <div class="posts" id="postsList"></div>
+      <div class="blog-view-all">
+        <a class="btn primary" href="blog.html">View All Posts <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <div class="read-panel" id="readBooks" role="tabpanel">
+      <div class="books-grid" id="booksGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ICEBERG poster ... gated free download (lead magnet) -->
+<section id="iceberg-promo">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="num">// 05</span>
+      <h2 class="neon-sign sign-about">The Iceberg</h2>
+      <p class="section-desc">Free Conspiracy Theory Iceberg poster. Newsletter subscribers only.</p>
+    </div>
+
+    <div class="deepstate-card" id="icebergCard">
+      <div class="deepstate-card-body">
+        <span class="deepstate-card-eyebrow">// FREE POSTER</span>
+        <h3>Get the Conspiracy Theory Iceberg.</h3>
+        <p>From surface-level to the bottom of the trench, mapped on one print-ready poster. Drop your email and the file is yours ... no spam, just the occasional weird dispatch from the static.</p>
+
+        <button type="button" class="deepstate-card-cta" id="icebergCtaBtn" aria-controls="icebergForm">
+          Enter the Iceberg <span class="arrow">→</span>
+        </button>
+
+        <form class="deepstate-card-form" id="icebergForm" hidden aria-label="Get the iceberg poster">
+          <input type="email" name="email" id="icebergEmail" placeholder="your@email.com" required autocomplete="email" />
+          <button type="submit" id="icebergSubmit">Get Poster <span class="arrow">→</span></button>
+        </form>
+        <p class="deepstate-card-error" id="icebergError" hidden role="alert">Couldn't reach the server. Try again in a sec?</p>
+      </div>
+      <div class="deepstate-card-art" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MUSIC -->
+<section id="music" class="amber-divider">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="num">// 06</span>
+      <h2 class="neon-sign sign-listen">Listen<span class="bulb-right"></span></h2>
+      <p class="section-desc">Stream Lucid Rob's music on your favorite app.</p>
+    </div>
+    <div class="music-grid" id="musicGrid"></div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
+  <div class="footer-cta">
+    <a href="#join">Get the Newsletter <span class="arrow">→</span></a>
+    <a href="" id="footerDiscord" target="_blank" rel="noopener">Join the Discord <span class="arrow">→</span></a>
+  </div>
   <div class="socials" id="socialsRow"></div>
   <div class="footer-meta">
     <span>© <span id="yr"></span> LUCIDROB.COM</span>
-    <span>v1.0.0 // ALL SIGNALS RESERVED</span>
+    <span><a href="/about.html">About</a> · <a href="/blog.html">Blog</a> · <a href="/rss.xml">RSS</a></span>
+    <span>v2.0.0 // ALL SIGNALS RESERVED</span>
   </div>
 </footer>
 
 <script>
-// Date + session
-const d = new Date();
-document.getElementById('todayStr').textContent = d.toISOString().slice(0,10).replace(/-/g, '.') + ' / ' + d.toTimeString().slice(0,5);
-document.getElementById('yr').textContent = d.getFullYear();
-document.getElementById('sessionId').textContent = 'SESSION_0x' + Math.floor(Math.random() * 0xFFFFFF).toString(16).toUpperCase().padStart(6, '0');
+// Year
+document.getElementById('yr').textContent = new Date().getFullYear();
 
 // Nav
 document.querySelector('.nav-toggle').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('open'));
 document.querySelectorAll('#navMenu a').forEach(a => a.addEventListener('click', () => document.getElementById('navMenu').classList.remove('open')));
 
-// YouTube
-async function loadVideos() {
+// Background damping past hero
+(function () {
+  const heroEl = document.querySelector('.hero');
+  if (!heroEl) return;
+  const threshold = () => Math.max(80, heroEl.offsetHeight - 120);
+  const onScroll = () => {
+    if (window.scrollY > threshold()) document.body.classList.add('scrolled');
+    else document.body.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+// Format big numbers (12345 → "12.3K", 1200000 → "1.2M")
+function fmtCount(n) {
+  n = Number(n) || 0;
+  if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M';
+  if (n >= 1_000)     return (n / 1_000).toFixed(1).replace(/\.0$/, '') + 'K';
+  return String(n);
+}
+
+// YouTube ... fetch latest videos AND channel statistics in one channels call
+async function loadYouTube() {
   const grid = document.getElementById('videoGrid');
+  const subEl = document.getElementById('ytSubCount');
   if (!CONFIG.YOUTUBE_API_KEY || CONFIG.YOUTUBE_API_KEY.includes('YOUR_')) {
     grid.innerHTML = '<div class="video-placeholder">[ CONFIG // ADD YOUTUBE_API_KEY AND YOUTUBE_CHANNEL_ID AT TOP OF FILE ]</div>';
     return;
   }
   try {
-    const chRes = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${CONFIG.YOUTUBE_CHANNEL_ID}&key=${CONFIG.YOUTUBE_API_KEY}`);
+    const chRes = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=contentDetails,statistics&id=${CONFIG.YOUTUBE_CHANNEL_ID}&key=${CONFIG.YOUTUBE_API_KEY}`);
     const chData = await chRes.json();
-    const uploads = chData.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
+    const channel = chData.items?.[0];
+    const uploads = channel?.contentDetails?.relatedPlaylists?.uploads;
+    const subs = channel?.statistics?.subscriberCount;
+    if (subs && subEl) subEl.textContent = fmtCount(subs);
     if (!uploads) throw new Error('No uploads playlist');
 
     const vidRes = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=3&playlistId=${uploads}&key=${CONFIG.YOUTUBE_API_KEY}`);
@@ -334,7 +371,7 @@ async function loadVideos() {
     grid.innerHTML = `<div class="video-placeholder">[ ERROR // CHECK API KEY, CHANNEL ID, AND QUOTA ]</div>`;
   }
 }
-loadVideos();
+loadYouTube();
 
 // Merch ... most recent products from lucidrobmerch.com (1 hat + 2 shirts).
 // Proxied through /api/merch because Shopify doesn't send CORS headers
@@ -384,7 +421,6 @@ const musicIcons = {
   soundcloud: '<svg viewBox="0 0 24 24"><path d="M7.5 17.5h-.563c-.184 0-.33-.146-.33-.33l-.52-5.17.52-5.168c0-.184.146-.33.33-.33h.563c.184 0 .33.146.33.33l.557 5.168-.557 5.17c0 .184-.146.33-.33.33zm8.568 2.165c.168.08.35.168.53.168H20c2.21 0 4-1.79 4-4s-1.79-4-4-4c-.548 0-1.067.112-1.54.312C18.064 8.08 14.896 5 10.97 5c-.96 0-1.893.19-2.732.507-.325.126-.413.255-.416.51v11.994c.003.263.207.488.464.516z"/></svg>'
 };
 const musicNames = { spotify: 'Spotify', appleMusic: 'Apple Music', soundcloud: 'SoundCloud' };
-const musicSubs = { spotify: 'stream.01', appleMusic: 'stream.02', soundcloud: 'stream.03' };
 document.getElementById('musicGrid').innerHTML = Object.entries(CONFIG.MUSIC).filter(([k,v]) => v).map(([k,v]) =>
   `<a class="music-tile" href="${v}" target="_blank" rel="noopener">
     <img class="music-tile-img" src="music-${k === 'appleMusic' ? 'apple' : k}.svg" alt="Lucid Rob on ${musicNames[k]}"/>
@@ -401,31 +437,99 @@ postsList.innerHTML = POSTS.slice(0, 3).map((p) => {
   return `<a class="post" href="${href}"><div class="post-date">${dt}</div><div><h3>${p.title}</h3><p class="excerpt">${p.excerpt}</p></div><div class="arrow">→</div></a>`;
 }).join('');
 
-// Newsletter
-const nlForm = document.getElementById('newsletterForm');
-nlForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const email = document.getElementById('newsletterEmail').value;
-  const btn = document.getElementById('newsletterBtn');
+// Read tabs
+document.querySelectorAll('.read-tab').forEach((tab) => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.read-tab').forEach((t) => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+    document.querySelectorAll('.read-panel').forEach((p) => p.classList.remove('active'));
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+    const target = document.getElementById(tab.dataset.target);
+    if (target) target.classList.add('active');
+  });
+});
+
+// Newsletter ... shared submit handler for hero + Join section forms
+async function submitNewsletter(form, btn, confirmEl, emailEl) {
+  const original = btn.textContent;
   btn.textContent = 'Sending...';
   btn.disabled = true;
   try {
     const res = await fetch('/api/subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, source: window.location.href })
+      body: JSON.stringify({ email: emailEl.value, source: window.location.href })
     });
     if (!res.ok) throw new Error('subscribe_failed');
-    nlForm.style.display = 'none';
-    document.getElementById('newsletterConfirm').style.display = 'block';
+    form.style.display = 'none';
+    if (confirmEl) confirmEl.style.display = 'block';
   } catch {
-    btn.textContent = 'Subscribe →';
+    btn.textContent = original;
     btn.disabled = false;
+  }
+}
+
+const heroForm = document.getElementById('heroNewsletterForm');
+heroForm?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  submitNewsletter(
+    heroForm,
+    document.getElementById('heroNewsletterBtn'),
+    document.getElementById('heroNewsletterConfirm'),
+    document.getElementById('heroNewsletterEmail')
+  );
+});
+
+const nlForm = document.getElementById('newsletterForm');
+nlForm?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  submitNewsletter(
+    nlForm,
+    document.getElementById('newsletterBtn'),
+    document.getElementById('newsletterConfirm'),
+    document.getElementById('newsletterEmail')
+  );
+});
+
+// Iceberg lead magnet ... reveal form on CTA click, submit unlocks /iceberg-poster.html
+const icebergCtaBtn = document.getElementById('icebergCtaBtn');
+const icebergForm   = document.getElementById('icebergForm');
+const icebergSubmit = document.getElementById('icebergSubmit');
+const icebergEmail  = document.getElementById('icebergEmail');
+const icebergError  = document.getElementById('icebergError');
+
+icebergCtaBtn?.addEventListener('click', () => {
+  icebergCtaBtn.style.display = 'none';
+  icebergForm.hidden = false;
+  icebergEmail.focus();
+});
+
+icebergForm?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  icebergError.hidden = true;
+  const original = icebergSubmit.innerHTML;
+  icebergSubmit.textContent = 'Sending...';
+  icebergSubmit.disabled = true;
+  try {
+    const res = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: icebergEmail.value, source: 'iceberg-poster' })
+    });
+    if (!res.ok) throw new Error('subscribe_failed');
+    try { localStorage.setItem('iceberg_unlocked', '1'); } catch {}
+    window.location.href = '/iceberg-poster.html';
+  } catch {
+    icebergError.hidden = false;
+    icebergSubmit.innerHTML = original;
+    icebergSubmit.disabled = false;
   }
 });
 
 // Discord
 document.getElementById('discordLink').href = CONFIG.DISCORD_URL;
+const footerDiscord = document.getElementById('footerDiscord');
+if (footerDiscord) footerDiscord.href = CONFIG.DISCORD_URL;
 
 // Socials
 const socialIcons = {
