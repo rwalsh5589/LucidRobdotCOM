@@ -1634,26 +1634,35 @@ button.deepstate-card-cta:hover { transform: translate(-1px, -1px); box-shadow: 
 .footer-meta a { color: var(--gray-5); text-decoration: underline; text-decoration-color: var(--gray-3); }
 .footer-meta a:hover { color: var(--gold); }
 
-/* Easter egg ... ambiguous link to /deepstate, styled like redacted text */
+/* Easter egg ... red warning link to /deepstate. The warning is the lure. */
 .footer-easter-egg {
   display: inline-block;
   font-family: 'JetBrains Mono', 'Space Mono', ui-monospace, monospace;
   font-size: 11px;
+  font-weight: 700;
   letter-spacing: 0.18em;
-  color: var(--gray-3) !important;
-  opacity: 0.55;
+  color: #ff3b3b !important;
   text-decoration: none !important;
-  transition: color 0.25s, opacity 0.25s, text-shadow 0.25s, letter-spacing 0.25s;
+  text-shadow: 0 0 6px rgba(255, 59, 59, 0.45);
   cursor: pointer;
   user-select: none;
+  animation: easter-pulse 2.4s ease-in-out infinite;
+  transition: color 0.2s, text-shadow 0.2s, letter-spacing 0.2s, transform 0.2s;
 }
 .footer-easter-egg:hover,
 .footer-easter-egg:focus-visible {
-  color: var(--gold) !important;
-  opacity: 1;
-  letter-spacing: 0.28em;
-  text-shadow: 0 0 10px rgba(255, 210, 74, 0.55);
+  color: #ff5454 !important;
+  letter-spacing: 0.26em;
+  text-shadow: 0 0 14px rgba(255, 84, 84, 0.85);
+  transform: translateY(-1px);
   outline: none;
+}
+@keyframes easter-pulse {
+  0%, 100% { text-shadow: 0 0 4px rgba(255, 59, 59, 0.35); }
+  50%      { text-shadow: 0 0 14px rgba(255, 59, 59, 0.75); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer-easter-egg { animation: none; }
 }
 
 /* Background motion ... full strength on hero, dialed back past it.
