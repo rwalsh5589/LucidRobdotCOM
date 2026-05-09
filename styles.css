@@ -1634,6 +1634,28 @@ button.deepstate-card-cta:hover { transform: translate(-1px, -1px); box-shadow: 
 .footer-meta a { color: var(--gray-5); text-decoration: underline; text-decoration-color: var(--gray-3); }
 .footer-meta a:hover { color: var(--gold); }
 
+/* Easter egg ... ambiguous link to /deepstate, styled like redacted text */
+.footer-easter-egg {
+  display: inline-block;
+  font-family: 'JetBrains Mono', 'Space Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--gray-3) !important;
+  opacity: 0.55;
+  text-decoration: none !important;
+  transition: color 0.25s, opacity 0.25s, text-shadow 0.25s, letter-spacing 0.25s;
+  cursor: pointer;
+  user-select: none;
+}
+.footer-easter-egg:hover,
+.footer-easter-egg:focus-visible {
+  color: var(--gold) !important;
+  opacity: 1;
+  letter-spacing: 0.28em;
+  text-shadow: 0 0 10px rgba(255, 210, 74, 0.55);
+  outline: none;
+}
+
 /* Background motion ... full strength on hero, dialed back past it.
    Layers are fixed so we shrink global opacity once the user scrolls. */
 body.scrolled .cosmos-bg     { opacity: 0.35; transition: opacity 0.6s ease; }
