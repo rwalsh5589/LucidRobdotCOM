@@ -170,8 +170,6 @@
         <span class="btn primary merch-shop-btn">Shop the Drop <span class="arrow">→</span></span>
       </div>
     </a>
-
-    <div class="merch-grid" id="merchGrid"></div>
   </div>
 </section>
 
@@ -372,35 +370,6 @@ async function loadYouTube() {
   }
 }
 loadYouTube();
-
-// Merch ... most recent products from lucidrobmerch.com (1 hat + 2 shirts).
-// Proxied through /api/merch because Shopify doesn't send CORS headers
-// on /products.json. If the proxy fails, the grid stays empty and the
-// existing "Shop the Drop" CTA acts as the fallback.
-(async () => {
-  const grid = document.getElementById('merchGrid');
-  if (!grid) return;
-  try {
-    const res = await fetch('/api/merch?hats=1&shirts=2');
-    if (!res.ok) return;
-    const { products } = await res.json();
-    if (!Array.isArray(products) || products.length === 0) return;
-    const escAttr = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    grid.innerHTML = products.map((p) => `
-      <div class="merch-product">
-        <a class="merch-product-cover" href="${escAttr(p.url)}" target="_blank" rel="noopener">
-          ${p.image ? `<img src="${escAttr(p.image)}" alt="${escAttr(p.title)}" loading="lazy">` : ''}
-        </a>
-        <div>
-          <h3>${escAttr(p.title)}</h3>
-          <a class="buy-btn" href="${escAttr(p.url)}" target="_blank" rel="noopener">Buy <span class="arrow">→</span></a>
-        </div>
-      </div>
-    `).join('');
-  } catch (err) {
-    /* silent — fall back to the static CTA below the grid */
-  }
-})();
 
 // Books
 document.getElementById('booksGrid').innerHTML = BOOKS.map(b => `
