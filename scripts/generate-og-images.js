@@ -52,7 +52,8 @@ const THEMES = {
   'haarp-weather-manipulation':      { accent: PALETTE.orange,  label: 'HAARP_ARRAY'             },
   'dark-ages-conspiracy':            { accent: PALETTE.violet,  label: 'DARK_AGES_LIE'           },
   'pastors-alien-disclosure-warning':{ accent: PALETTE.magenta, label: 'PASTOR_DISCLOSURE_OP'    },
-  'bigfoot-missing-link':            { accent: PALETTE.orange,  label: 'BIGFOOT_LEGEND'          }
+  'bigfoot-missing-link':            { accent: PALETTE.orange,  label: 'BIGFOOT_LEGEND'          },
+  'scientology-l-ron-hubbard-cult-empire': { accent: PALETTE.violet, label: 'SCIENTOLOGY_FILE'  }
 };
 
 const MOTIFS = {

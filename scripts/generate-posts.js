@@ -200,13 +200,12 @@ const buildPage = (post) => {
   </a>
   <button class="nav-toggle" aria-label="menu">MENU</button>
   <ul id="navMenu">
-    <li><a href="/#videos">01_VIDEOS</a></li>
-    <li><a href="/#books">02_BOOKS</a></li>
-    <li><a href="/#music">03_MUSIC</a></li>
-    <li><a href="/#merch">04_MERCH</a></li>
-    <li><a href="/blog">05_BLOG</a></li>
-    <li><a href="/#join">06_JOIN</a></li>
-    <li><a href="/#about">07_ABOUT</a></li>
+    <li><a href="/#videos">Watch</a></li>
+    <li><a href="/#merch">Shop</a></li>
+    <li><a href="/blog.html">Read</a></li>
+    <li><a href="/#music">Listen</a></li>
+    <li><a href="/#join">Join</a></li>
+    <li><a class="nav-cta" href="/#join">Subscribe <span class="arrow">→</span></a></li>
   </ul>
 </nav>
 
@@ -381,6 +380,8 @@ console.log(`  wrote rss.xml`);
 
 const robots = `User-agent: *
 Allow: /
+Disallow: /iceberg-poster.html
+Disallow: /lucid_rob_iceberg.png
 
 Sitemap: ${SITE_URL}/sitemap.xml
 `;
