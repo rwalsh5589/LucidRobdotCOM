@@ -53,7 +53,8 @@ const THEMES = {
   'dark-ages-conspiracy':            { accent: PALETTE.violet,  label: 'DARK_AGES_LIE'           },
   'pastors-alien-disclosure-warning':{ accent: PALETTE.magenta, label: 'PASTOR_DISCLOSURE_OP'    },
   'bigfoot-missing-link':            { accent: PALETTE.orange,  label: 'BIGFOOT_LEGEND'          },
-  'scientology-l-ron-hubbard-cult-empire': { accent: PALETTE.violet, label: 'SCIENTOLOGY_FILE'  }
+  'scientology-l-ron-hubbard-cult-empire': { accent: PALETTE.violet, label: 'SCIENTOLOGY_FILE'  },
+  'hantavirus-covid-plandemic-conspiracy': { accent: PALETTE.teal,   label: 'HANTAVIRUS_2026'   }
 };
 
 const MOTIFS = {
