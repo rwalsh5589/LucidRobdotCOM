@@ -54,7 +54,8 @@ const THEMES = {
   'pastors-alien-disclosure-warning':{ accent: PALETTE.magenta, label: 'PASTOR_DISCLOSURE_OP'    },
   'bigfoot-missing-link':            { accent: PALETTE.orange,  label: 'BIGFOOT_LEGEND'          },
   'scientology-l-ron-hubbard-cult-empire': { accent: PALETTE.violet, label: 'SCIENTOLOGY_FILE'  },
-  'hantavirus-covid-plandemic-conspiracy': { accent: PALETTE.teal,   label: 'HANTAVIRUS_2026'   }
+  'hantavirus-covid-plandemic-conspiracy': { accent: PALETTE.teal,   label: 'HANTAVIRUS_2026'   },
+  'agi-cover-up-conspiracy':               { accent: PALETTE.magenta, label: 'AGI_COVER_UP'      }
 };
 
 const MOTIFS = {
@@ -325,6 +326,54 @@ const MOTIFS = {
       <!-- Two glinting eyes peeking from the trees -->
       <circle cx="-110" cy="118" r="3.5" fill="${PALETTE.gold}" opacity="0.95"/>
       <circle cx="-96"  cy="118" r="3.5" fill="${PALETTE.gold}" opacity="0.95"/>
+    </g>`,
+  'agi-cover-up-conspiracy': (c) => `
+    <g transform="translate(940 320)">
+      <!-- Vault / black box housing -->
+      <rect x="-160" y="-160" width="320" height="320" rx="14" fill="${c}" opacity="0.08"/>
+      <rect x="-160" y="-160" width="320" height="320" rx="14" fill="none" stroke="${c}" stroke-width="3.5" opacity="0.9"/>
+      <!-- Neural network: input layer (left) -->
+      <circle cx="-100" cy="-100" r="8" fill="${c}" opacity="0.9"/>
+      <circle cx="-100" cy="-40"  r="8" fill="${c}" opacity="0.9"/>
+      <circle cx="-100" cy="40"   r="8" fill="${c}" opacity="0.9"/>
+      <circle cx="-100" cy="100"  r="8" fill="${c}" opacity="0.9"/>
+      <!-- Hidden layer (middle) -->
+      <circle cx="0" cy="-80" r="8" fill="${c}" opacity="0.85"/>
+      <circle cx="0" cy="-20" r="8" fill="${c}" opacity="0.85"/>
+      <circle cx="0" cy="40"  r="8" fill="${c}" opacity="0.85"/>
+      <circle cx="0" cy="100" r="8" fill="${c}" opacity="0.85"/>
+      <!-- Output layer (right) -->
+      <circle cx="100" cy="-60" r="8" fill="${c}" opacity="0.9"/>
+      <circle cx="100" cy="0"   r="8" fill="${c}" opacity="0.9"/>
+      <circle cx="100" cy="60"  r="8" fill="${c}" opacity="0.9"/>
+      <!-- Connections L1 -> L2 -->
+      <line x1="-100" y1="-100" x2="0" y2="-80" stroke="${c}" stroke-width="1.4" opacity="0.5"/>
+      <line x1="-100" y1="-100" x2="0" y2="-20" stroke="${c}" stroke-width="1.4" opacity="0.35"/>
+      <line x1="-100" y1="-40"  x2="0" y2="-80" stroke="${c}" stroke-width="1.4" opacity="0.4"/>
+      <line x1="-100" y1="-40"  x2="0" y2="-20" stroke="${c}" stroke-width="1.4" opacity="0.5"/>
+      <line x1="-100" y1="-40"  x2="0" y2="40"  stroke="${c}" stroke-width="1.4" opacity="0.3"/>
+      <line x1="-100" y1="40"   x2="0" y2="-20" stroke="${c}" stroke-width="1.4" opacity="0.3"/>
+      <line x1="-100" y1="40"   x2="0" y2="40"  stroke="${c}" stroke-width="1.4" opacity="0.5"/>
+      <line x1="-100" y1="40"   x2="0" y2="100" stroke="${c}" stroke-width="1.4" opacity="0.4"/>
+      <line x1="-100" y1="100"  x2="0" y2="40"  stroke="${c}" stroke-width="1.4" opacity="0.35"/>
+      <line x1="-100" y1="100"  x2="0" y2="100" stroke="${c}" stroke-width="1.4" opacity="0.5"/>
+      <!-- Connections L2 -> L3 -->
+      <line x1="0" y1="-80" x2="100" y2="-60" stroke="${c}" stroke-width="1.4" opacity="0.5"/>
+      <line x1="0" y1="-80" x2="100" y2="0"   stroke="${c}" stroke-width="1.4" opacity="0.3"/>
+      <line x1="0" y1="-20" x2="100" y2="-60" stroke="${c}" stroke-width="1.4" opacity="0.4"/>
+      <line x1="0" y1="-20" x2="100" y2="0"   stroke="${c}" stroke-width="1.4" opacity="0.5"/>
+      <line x1="0" y1="40"  x2="100" y2="0"   stroke="${c}" stroke-width="1.4" opacity="0.45"/>
+      <line x1="0" y1="40"  x2="100" y2="60"  stroke="${c}" stroke-width="1.4" opacity="0.5"/>
+      <line x1="0" y1="100" x2="100" y2="60"  stroke="${c}" stroke-width="1.4" opacity="0.4"/>
+      <!-- Redaction bar across the middle hiding the output -->
+      <rect x="-150" y="-14" width="300" height="28" fill="${PALETTE.ink}"/>
+      <rect x="-150" y="-14" width="300" height="28" fill="none" stroke="${PALETTE.gold}" stroke-width="2.5" opacity="0.95"/>
+      <text x="0" y="6" text-anchor="middle" font-family="'Lilita One','Impact','Arial Black',sans-serif" font-size="16" fill="${PALETTE.gold}" letter-spacing="0.24em">CLASSIFIED</text>
+      <!-- AGI label up top -->
+      <text x="0" y="-122" text-anchor="middle" font-family="'Lilita One','Impact','Arial Black',sans-serif" font-size="22" fill="${c}" stroke="${PALETTE.ink}" stroke-width="1.2" stroke-linejoin="round" paint-order="stroke fill" letter-spacing="0.24em">AGI :: ?</text>
+      <!-- Lock icon bottom -->
+      <rect x="-14" y="125" width="28" height="22" rx="3" fill="${PALETTE.gold}" opacity="0.95"/>
+      <path d="M -9 125 L -9 116 Q -9 104 0 104 Q 9 104 9 116 L 9 125" fill="none" stroke="${PALETTE.gold}" stroke-width="3" opacity="0.95"/>
     </g>`
 };
 

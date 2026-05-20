@@ -6,12 +6,21 @@
   <atom:link href="https://lucidrob.com/rss.xml" rel="self" type="application/rss+xml"/>
   <description>Conspiracies. Hidden history. Signal from the static.</description>
   <language>en-us</language>
-  <lastBuildDate>Fri, 15 May 2026 16:53:34 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 20 May 2026 02:50:58 GMT</lastBuildDate>
   <image>
     <url>https://lucidrob.com/og-image.png</url>
     <title>Lucid Rob</title>
     <link>https://lucidrob.com</link>
   </image>
+    <item>
+      <title><![CDATA[The AGI Cover-Up: The Hinton Warning, the Aschenbrenner Memo, the Anthropic Welfare Team, and Whether the Big Labs Already Crossed the Line and Aren't Telling Us]]></title>
+      <link>https://lucidrob.com/blog/agi-cover-up-conspiracy</link>
+      <guid isPermaLink="true">https://lucidrob.com/blog/agi-cover-up-conspiracy</guid>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Right now if you spend ten minutes on the AI corner of TikTok or YouTube you will be told, sometimes by a former lab employee and sometimes by a teenager with an iPhone, that the major AI companies have already built an honest-to-God AGI and are deliberately keeping it behind closed doors. The theory has three legs. A pattern of senior researchers leaving and warning, in increasingly stark language, that the labs are not telling the public what they are doing. A leaked or unleaked or maybe-leaked internal capabilities forecast that has the AGI threshold being crossed not in five years but already. And a compute-and-capex trajectory at the frontier labs that does not make sense unless something behind the firewall is doing work the chatbot you are using right now is not yet doing. Let me walk through what we actually know, what we definitely do not know, and whether the cover-up theory is paranoia, projection, or a reasonable read of a set of facts the labs are themselves refusing to clarify.]]></description>
+      <enclosure url="https://lucidrob.com/og/agi-cover-up-conspiracy.png" type="image/png" length="0"/>
+      <category>ai, tech, power, internet, politics</category>
+    </item>
     <item>
       <title><![CDATA[Hantavirus 2026: The Cruise Ship, the 2022 Tweet, the Moderna Pipeline, and Whether This Is the Next Pandemic or the Next Distraction]]></title>
       <link>https://lucidrob.com/blog/hantavirus-covid-plandemic-conspiracy</link>
