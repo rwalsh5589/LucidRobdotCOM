@@ -55,7 +55,8 @@ const THEMES = {
   'bigfoot-missing-link':            { accent: PALETTE.orange,  label: 'BIGFOOT_LEGEND'          },
   'scientology-l-ron-hubbard-cult-empire': { accent: PALETTE.violet, label: 'SCIENTOLOGY_FILE'  },
   'hantavirus-covid-plandemic-conspiracy': { accent: PALETTE.teal,   label: 'HANTAVIRUS_2026'   },
-  'agi-cover-up-conspiracy':               { accent: PALETTE.magenta, label: 'AGI_COVER_UP'      }
+  'agi-cover-up-conspiracy':               { accent: PALETTE.magenta, label: 'AGI_COVER_UP'      },
+  'chavin-de-huantar-psychedelic-religion':{ accent: PALETTE.teal,    label: 'CHAVIN_DRUG_CULT'  }
 };
 
 const MOTIFS = {
@@ -374,6 +375,41 @@ const MOTIFS = {
       <!-- Lock icon bottom -->
       <rect x="-14" y="125" width="28" height="22" rx="3" fill="${PALETTE.gold}" opacity="0.95"/>
       <path d="M -9 125 L -9 116 Q -9 104 0 104 Q 9 104 9 116 L 9 125" fill="none" stroke="${PALETTE.gold}" stroke-width="3" opacity="0.95"/>
+    </g>`,
+  'chavin-de-huantar-psychedelic-religion': (c) => `
+    <g transform="translate(940 320)">
+      <!-- Stone chamber frame: piercing top/bottom -->
+      <rect x="-150" y="-160" width="300" height="14" fill="${c}" opacity="0.18"/>
+      <rect x="-150" y="-160" width="300" height="14" fill="none" stroke="${c}" stroke-width="2" opacity="0.7"/>
+      <rect x="-150" y="146"  width="300" height="14" fill="${c}" opacity="0.18"/>
+      <rect x="-150" y="146"  width="300" height="14" fill="none" stroke="${c}" stroke-width="2" opacity="0.7"/>
+      <!-- The Lanzón: tall granite stake piercing floor and ceiling -->
+      <path d="M -28 -170 L 28 -170 L 22 160 L -22 160 Z" fill="${c}" opacity="0.16"/>
+      <path d="M -28 -170 L 28 -170 L 22 160 L -22 160 Z" fill="none" stroke="${c}" stroke-width="3" opacity="0.95"/>
+      <!-- Vertical glyph lines suggesting carved relief -->
+      <line x1="-14" y1="-150" x2="-14" y2="140" stroke="${c}" stroke-width="1" opacity="0.45" stroke-dasharray="4 6"/>
+      <line x1="14"  y1="-150" x2="14"  y2="140" stroke="${c}" stroke-width="1" opacity="0.45" stroke-dasharray="4 6"/>
+      <!-- Fanged predator face mid-monolith -->
+      <circle cx="-9"  cy="-26" r="4.5" fill="${PALETTE.gold}" opacity="0.95"/>
+      <circle cx="9"   cy="-26" r="4.5" fill="${PALETTE.gold}" opacity="0.95"/>
+      <path d="M -16 -4 Q 0 6 16 -4" fill="none" stroke="${PALETTE.gold}" stroke-width="2.2" opacity="0.95"/>
+      <!-- Fangs -->
+      <path d="M -10 -2 L -6 14 L -2 -2 Z" fill="${PALETTE.gold}" opacity="0.95"/>
+      <path d="M 2 -2 L 6 14 L 10 -2 Z"   fill="${PALETTE.gold}" opacity="0.95"/>
+      <!-- Snuff tube + powder trail to the left -->
+      <rect x="-138" y="58" width="68" height="9" rx="2" fill="${c}" opacity="0.85"/>
+      <rect x="-138" y="58" width="68" height="9" rx="2" fill="none" stroke="${PALETTE.ink}" stroke-width="1" opacity="0.7"/>
+      <circle cx="-62" cy="56" r="2" fill="${PALETTE.gold}" opacity="0.9"/>
+      <circle cx="-54" cy="50" r="1.6" fill="${PALETTE.gold}" opacity="0.8"/>
+      <circle cx="-48" cy="42" r="1.3" fill="${PALETTE.gold}" opacity="0.7"/>
+      <circle cx="-44" cy="34" r="1" fill="${PALETTE.gold}" opacity="0.6"/>
+      <!-- Conch shell on the right -->
+      <path d="M 110 -22 Q 144 -32 150 -2 Q 154 22 128 28 Q 110 30 104 14 Q 100 0 110 -22 Z" fill="${c}" opacity="0.18"/>
+      <path d="M 110 -22 Q 144 -32 150 -2 Q 154 22 128 28 Q 110 30 104 14 Q 100 0 110 -22 Z" fill="none" stroke="${c}" stroke-width="2.2" opacity="0.9"/>
+      <path d="M 124 -8 Q 138 -4 138 8" fill="none" stroke="${c}" stroke-width="1.2" opacity="0.6"/>
+      <!-- Sound ripples emanating from conch -->
+      <path d="M 160 -2 Q 174 -2 180 12" fill="none" stroke="${c}" stroke-width="1.4" opacity="0.55"/>
+      <path d="M 168 -10 Q 188 -8 196 12" fill="none" stroke="${c}" stroke-width="1.2" opacity="0.4"/>
     </g>`
 };
 
