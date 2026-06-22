@@ -57,7 +57,8 @@ const THEMES = {
   'hantavirus-covid-plandemic-conspiracy': { accent: PALETTE.teal,   label: 'HANTAVIRUS_2026'   },
   'agi-cover-up-conspiracy':               { accent: PALETTE.magenta, label: 'AGI_COVER_UP'      },
   'chavin-de-huantar-psychedelic-religion':{ accent: PALETTE.teal,    label: 'CHAVIN_DRUG_CULT'  },
-  'uap-disclosure-pursue-files':           { accent: PALETTE.orange,  label: 'UAP_DISCLOSURE_2026' }
+  'uap-disclosure-pursue-files':           { accent: PALETTE.orange,  label: 'UAP_DISCLOSURE_2026' },
+  'uap-disclosure-mother-orb-pursue-3':    { accent: PALETTE.orange,  label: 'MOTHER_ORB_FILE'     }
 };
 
 const MOTIFS = {
