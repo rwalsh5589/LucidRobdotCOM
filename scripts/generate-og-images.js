@@ -59,7 +59,8 @@ const THEMES = {
   'chavin-de-huantar-psychedelic-religion':{ accent: PALETTE.teal,    label: 'CHAVIN_DRUG_CULT'  },
   'uap-disclosure-pursue-files':           { accent: PALETTE.orange,  label: 'UAP_DISCLOSURE_2026' },
   'uap-disclosure-mother-orb-pursue-3':    { accent: PALETTE.orange,  label: 'MOTHER_ORB_FILE'     },
-  'oliver-tree-antarctica-alien-base':     { accent: PALETTE.teal,    label: 'OLIVER_TREE_FILE'    }
+  'oliver-tree-antarctica-alien-base':     { accent: PALETTE.teal,    label: 'OLIVER_TREE_FILE'    },
+  'denver-airport-conspiracy':             { accent: PALETTE.magenta, label: 'DIA_FILE'            }
 };
 
 const MOTIFS = {
@@ -413,6 +414,25 @@ const MOTIFS = {
       <!-- Sound ripples emanating from conch -->
       <path d="M 160 -2 Q 174 -2 180 12" fill="none" stroke="${c}" stroke-width="1.4" opacity="0.55"/>
       <path d="M 168 -10 Q 188 -8 196 12" fill="none" stroke="${c}" stroke-width="1.2" opacity="0.4"/>
+    </g>`,
+  'denver-airport-conspiracy': (c) => `
+    <g transform="translate(940 320)">
+      <!-- Tented-peak skyline (Jeppesen Terminal roof) -->
+      <path d="M -220 40 L -180 -46 L -140 40 L -100 -68 L -60 40 L -20 -56 L 20 40 L 60 -68 L 100 40 L 140 -46 L 180 40 L 220 -56 L 220 40 Z"
+        fill="${c}" opacity="0.22" stroke="${c}" stroke-width="3" stroke-linejoin="round"/>
+      <!-- Red-eye horse dot on center peak -->
+      <circle cx="0" cy="-46" r="4.5" fill="${PALETTE.magenta}" opacity="0.95"/>
+      <!-- Horizon / ground line -->
+      <line x1="-240" y1="40" x2="240" y2="40" stroke="${c}" stroke-width="2" opacity="0.9"/>
+      <!-- Underground grid, dashed -->
+      <line x1="-240" y1="78"  x2="240" y2="78"  stroke="${c}" stroke-width="1" opacity="0.45" stroke-dasharray="4 6"/>
+      <line x1="-240" y1="112" x2="240" y2="112" stroke="${c}" stroke-width="1" opacity="0.32" stroke-dasharray="4 6"/>
+      <line x1="-240" y1="146" x2="240" y2="146" stroke="${c}" stroke-width="1" opacity="0.22" stroke-dasharray="4 6"/>
+      <!-- Buried square + compass hint -->
+      <g transform="translate(0 122)" opacity="0.9">
+        <path d="M -30 20 L 0 -22 L 30 20"  fill="none" stroke="${PALETTE.gold}" stroke-width="2.6" stroke-linejoin="round"/>
+        <path d="M -30 -22 L 0 20 L 30 -22" fill="none" stroke="${PALETTE.gold}" stroke-width="2.6" stroke-linejoin="round"/>
+      </g>
     </g>`
 };
 
