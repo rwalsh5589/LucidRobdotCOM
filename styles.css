@@ -1802,3 +1802,311 @@ body.scrolled .cosmos-shapes { opacity: 0.4; transition: opacity 0.6s ease; }
   .iceberg-gate-form { flex-direction: column; border-radius: 16px; padding: 8px; }
   .iceberg-gate-form button { width: 100%; padding: 12px 14px; }
 }
+
+/* =========================================================
+   CONSPIRACY BIBLE — homepage banner + /conspiracybible page
+   ========================================================= */
+
+/* ---- Homepage banner card ---- */
+.cb-card {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 52px;
+  align-items: center;
+  background: linear-gradient(135deg, var(--gray-1) 0%, rgba(23, 10, 40, 0.98) 100%);
+  border: 3px solid var(--gold);
+  border-radius: 20px;
+  padding: 44px 48px;
+  box-shadow: 0 0 60px rgba(255, 210, 74, 0.14), var(--shadow-lg);
+  text-decoration: none;
+  color: var(--paper);
+  transition: transform 0.25s, box-shadow 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.cb-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    -45deg, transparent 0px, transparent 20px,
+    rgba(255, 210, 74, 0.025) 20px, rgba(255, 210, 74, 0.025) 22px
+  );
+  pointer-events: none;
+}
+.cb-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 var(--ink), 9px 9px 0 1px var(--gold), 0 0 80px rgba(255, 210, 74, 0.2);
+}
+
+/* Book cover image */
+.cb-image-wrap { position: relative; flex-shrink: 0; }
+
+.cb-cover {
+  width: 100%; height: auto; display: block;
+  border-radius: 10px;
+  border: 3px solid var(--ink);
+  box-shadow: var(--shadow-lg), 0 0 40px rgba(0, 0, 0, 0.6);
+  filter: brightness(0.88) contrast(1.05);
+}
+
+/* Caution tape strips */
+.cb-tape {
+  position: absolute;
+  left: -18px; right: -18px;
+  height: 38px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #FFD700 0px, #FFD700 18px,
+    #0d0d0d 18px, #0d0d0d 36px
+  );
+  border-top: 2px solid rgba(0, 0, 0, 0.6);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  z-index: 2;
+  overflow: hidden;
+}
+.cb-tape::after {
+  content: 'CAUTION · DO NOT CROSS · CAUTION · DO NOT CROSS · CAUTION · DO NOT CROSS · CAUTION · DO NOT CROSS · CAUTION · DO NOT CROSS · CAUTION · DO NOT CROSS · ';
+  position: absolute; inset: 0;
+  display: flex; align-items: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800; font-size: 10px;
+  letter-spacing: 0.06em;
+  color: rgba(0, 0, 0, 0.55);
+  white-space: nowrap;
+  padding: 0 10px;
+}
+.cb-tape-top    { top: 23%;    transform: rotate(-3.5deg); }
+.cb-tape-bottom { bottom: 23%; transform: rotate(2.5deg); }
+
+/* Classified stamp */
+.cb-stamp {
+  position: absolute;
+  bottom: 8%; right: 5%;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: clamp(16px, 2.2vw, 24px);
+  letter-spacing: 0.18em;
+  color: rgba(220, 30, 30, 0.95);
+  border: 5px solid rgba(220, 30, 30, 0.9);
+  padding: 8px 16px; border-radius: 4px;
+  transform: rotate(-15deg);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 0 16px rgba(220, 30, 30, 0.2), 0 0 20px rgba(220, 30, 30, 0.35);
+  z-index: 3;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  line-height: 1;
+}
+
+/* Info text side */
+.cb-info { display: flex; flex-direction: column; gap: 22px; }
+
+.cb-info .tag {
+  display: inline-block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(255, 210, 74, 0.1);
+  border: 1.5px solid var(--gold);
+  border-radius: 999px;
+  padding: 5px 16px; width: fit-content;
+  animation: pulse-gold 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 210, 74, 0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(255, 210, 74, 0); }
+}
+
+.cb-title {
+  font-family: 'Alfa Slab One', serif;
+  font-size: clamp(28px, 3.6vw, 48px);
+  line-height: 1.1; font-weight: 400;
+  color: var(--paper);
+  letter-spacing: 0.01em;
+  text-shadow: 3px 3px 0 var(--ink);
+  -webkit-text-stroke: 1px var(--ink);
+}
+
+.cb-desc {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 17px; color: var(--paper-dim);
+  line-height: 1.65; max-width: 480px;
+}
+
+.cb-cta { align-self: flex-start; margin-top: 4px; }
+
+@media (max-width: 820px) {
+  .cb-card { grid-template-columns: 1fr; gap: 36px; padding: 32px 28px; }
+  .cb-image-wrap { max-width: 240px; margin: 0 auto; }
+  .cb-cta { align-self: stretch; justify-content: center; }
+}
+
+/* ---- /conspiracybible page ---- */
+.cb-page-hero {
+  min-height: 55vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 100px 32px 60px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.cb-page-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    -45deg, transparent 0px, transparent 28px,
+    rgba(255, 210, 74, 0.03) 28px, rgba(255, 210, 74, 0.03) 30px
+  );
+  pointer-events: none;
+}
+
+.cb-eyebrow {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--gold); opacity: 0.7;
+  margin-bottom: 24px;
+}
+
+.cb-page-heading {
+  font-family: 'Alfa Slab One', serif;
+  font-size: clamp(44px, 8vw, 96px);
+  font-weight: 400; line-height: 1.0;
+  color: var(--paper);
+  -webkit-text-stroke: 2px var(--ink);
+  text-shadow: 5px 5px 0 var(--ink);
+  margin-bottom: 10px;
+}
+.cb-page-heading span { display: block; color: var(--gold); }
+
+.cb-page-byline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 17px; color: var(--paper-dim);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 36px;
+}
+
+.cb-coming-soon-badge {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: rgba(220, 30, 30, 0.1);
+  border: 2px solid rgba(220, 30, 30, 0.7);
+  color: rgba(220, 30, 30, 0.95);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800; font-size: 14px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  padding: 10px 24px; border-radius: 6px;
+  animation: classified-pulse 2s ease-in-out infinite;
+}
+.cb-coming-soon-badge::before,
+.cb-coming-soon-badge::after { content: '▶'; font-size: 9px; }
+
+@keyframes classified-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(220, 30, 30, 0.4); }
+  50%       { opacity: 0.75; box-shadow: 0 0 24px rgba(220, 30, 30, 0.3); }
+}
+
+/* Book + details layout */
+.cb-page-content { padding: 40px 32px 100px; }
+
+.cb-page-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 72px; align-items: start;
+}
+
+.cb-cover-large { position: relative; }
+.cb-cover-large .cb-cover {
+  width: 100%; height: auto; display: block;
+  border-radius: 12px; border: 3px solid var(--ink);
+  box-shadow: var(--shadow-lg), 0 0 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 210, 74, 0.1);
+  filter: brightness(0.9) contrast(1.05);
+}
+.cb-cover-large .cb-tape { left: -22px; right: -22px; }
+.cb-cover-large .cb-stamp { font-size: clamp(18px, 2vw, 26px); }
+
+.cb-page-details { display: flex; flex-direction: column; gap: 36px; }
+
+.cb-redacted-block {
+  background: rgba(255, 244, 208, 0.03);
+  border: 1px solid rgba(255, 210, 74, 0.14);
+  border-radius: 14px; padding: 32px;
+}
+.cb-redacted-block h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); opacity: 0.65;
+  margin-bottom: 20px;
+}
+
+.cb-redacted-line {
+  height: 13px; background: var(--paper-mute);
+  border-radius: 3px; margin-bottom: 10px; opacity: 0.14;
+}
+.cb-redacted-line.full  { width: 100%; }
+.cb-redacted-line.med   { width: 70%; }
+.cb-redacted-line.short { width: 44%; }
+
+.cb-reveal-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px; color: var(--paper-dim);
+  line-height: 1.65; margin-bottom: 10px;
+}
+
+/* Notify form block */
+.cb-notify-block {
+  background: var(--gray-1);
+  border: 3px solid var(--gold);
+  border-radius: 18px; padding: 36px;
+  box-shadow: 0 0 40px rgba(255, 210, 74, 0.1);
+}
+.cb-notify-block .tag {
+  display: inline-block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 14px;
+}
+.cb-notify-block h3 {
+  font-family: 'Alfa Slab One', serif;
+  font-size: 24px; font-weight: 400;
+  color: var(--paper); line-height: 1.2; margin-bottom: 10px;
+}
+.cb-notify-block p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px; color: var(--paper-dim);
+  line-height: 1.55; margin-bottom: 22px;
+}
+.cb-notify-form { display: flex; gap: 10px; }
+.cb-notify-form input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(255, 210, 74, 0.35);
+  border-radius: 10px;
+  color: var(--paper);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px; padding: 12px 18px;
+  outline: none; transition: border-color 0.2s;
+}
+.cb-notify-form input:focus { border-color: var(--gold); }
+.cb-notify-form input::placeholder { color: var(--gray-4); }
+.cb-notify-confirm {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px; color: var(--gold);
+  margin-top: 12px; letter-spacing: 0.06em;
+  text-shadow: 0 0 8px rgba(255, 210, 74, 0.5);
+}
+
+@media (max-width: 860px) {
+  .cb-page-grid { grid-template-columns: 1fr; gap: 44px; }
+  .cb-cover-large { max-width: 280px; margin: 0 auto; }
+  .cb-notify-form { flex-direction: column; }
+}
+@media (max-width: 540px) {
+  .cb-page-content { padding: 30px 20px 80px; }
+  .cb-page-hero { padding: 70px 20px 40px; }
+  .cb-notify-block { padding: 26px 20px; }
+  .cb-redacted-block { padding: 24px 18px; }
+}
